@@ -2,7 +2,7 @@
 package Model;
 
 public enum TipoEmpleado {
-    ADMINISTRADO,
+    ADMINISTRADOR,
     CAJERO,
     COCINERO,
     MOZO;
