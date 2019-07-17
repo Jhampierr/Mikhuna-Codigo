@@ -4,7 +4,7 @@ import Dao.DAOValidar;
 
 public class Seguridad {
 
-    public String Validacion(String Usuario, String Contrasenia) throws Exception {
+    public String validacion(String Usuario, String Contrasenia) throws Exception {
         String usuarioValidado, Validacion;
         DAOValidar vali = new DAOValidar();
 
@@ -13,7 +13,7 @@ public class Seguridad {
         } else {
             Validacion = vali.ValidarUsuario(Usuario,Contrasenia);
             if (Validacion.equals("")) {
-                usuarioValidado = "Usuario o Password erroneo";
+                usuarioValidado = "Usuario o contraseña incorrecta";
             } else {
                 if (Validacion.equals("CAJERO")) {
                     usuarioValidado = "CAJERO";

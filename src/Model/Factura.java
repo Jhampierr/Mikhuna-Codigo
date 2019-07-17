@@ -14,5 +14,13 @@ public class Factura {
     public void setPedido(Pedido pedido) {
         this.pedido = pedido;
     }
+
+    public LocalDate getFechaD() {
+        return fechaD;
+    }
+
+    public void setFechaD(LocalDate fechaD) {
+        this.fechaD = fechaD;
+    }
     
 }

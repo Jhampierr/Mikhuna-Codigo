@@ -1,25 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Controlador;
 
-/**
- *
- * @author ideapad110
- */
 public class MenuPrincipal extends javax.swing.JFrame {
-
-    /**
-     * Creates new form MenuPrincipal
-     */
+    Login login = new Login(new javax.swing.JFrame(), true);
     public MenuPrincipal() {
         initComponents();
         this.setTitle("Mikhuna");
         this.setSize(1000, 700);
         this.setResizable(false);
         setLocationRelativeTo(null);
+        
+        login.setVisible(true);
     }
 
     /**
@@ -138,6 +129,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jMenu5.setText("                  Cerrar sesion          ");
         jMenu5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jMenu5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu5ActionPerformed(evt);
+            }
+        });
         jMenuBar1.add(jMenu5);
 
         setJMenuBar(jMenuBar1);
@@ -155,6 +151,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jMenu5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu5ActionPerformed
+       login.setVisible(true);
+    }//GEN-LAST:event_jMenu5ActionPerformed
 
     /**
      * @param args the command line arguments
