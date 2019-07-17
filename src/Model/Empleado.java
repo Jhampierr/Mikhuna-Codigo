@@ -6,9 +6,16 @@ import java.time.LocalDate;
 public class Empleado extends Persona{
     private String codigoE;
     private String clave;
-    private String direccionE;
-    private LocalDate fechaVinculacion;
+    private LocalDate fechaValidacion;
     private TipoEmpleado tipoEmp;
+
+    public TipoEmpleado getTipoEmp() {
+        return tipoEmp;
+    }
+
+    public void setTipoEmp(TipoEmpleado tipoEmp) {
+        this.tipoEmp = tipoEmp;
+    }
 
     public String getCodigoE() {
         return codigoE;
@@ -26,28 +33,12 @@ public class Empleado extends Persona{
         this.clave = clave;
     }
 
-    public String getDireccionE() {
-        return direccionE;
+    public LocalDate getFechaValidacion() {
+        return fechaValidacion;
     }
 
-    public void setDireccionE(String direccionE) {
-        this.direccionE = direccionE;
-    }
-
-    public LocalDate getFechaVinculacion() {
-        return fechaVinculacion;
-    }
-
-    public void setFechaVinculacion(LocalDate fechaVinculacion) {
-        this.fechaVinculacion = fechaVinculacion;
-    }
-
-    public TipoEmpleado getTipoEmp() {
-        return tipoEmp;
-    }
-
-    public void setTipoEmp(TipoEmpleado tipoEmp) {
-        this.tipoEmp = tipoEmp;
+    public void setFechaValidacion(LocalDate fechaValidacion) {
+        this.fechaValidacion = fechaValidacion;
     }
 
 }

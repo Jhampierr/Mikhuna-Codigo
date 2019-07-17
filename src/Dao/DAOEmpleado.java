@@ -14,12 +14,13 @@ public class DAOEmpleado extends Conexion implements CRUD<Empleado>{
     public void registrar(Empleado empl) throws Exception {
         try{
             this.conectar();
-            PreparedStatement st =  this.conexion.prepareStatement("INSERT INTO `empleado` (`cod_empleado`, `nombres`, `documento`, `telefono`, `direccion`, `clave`, `fecha_vinculacion`, `tipo_empleado`) VALUES (?, ?, ?, ?, ?, ?, now(), ?);");
+            PreparedStatement st =  this.conexion.prepareStatement("INSERT INTO `empleado` (`cod_empleado`, `nombres`, `documento`, `telefono`, `direccion`, `clave`, `fecha_vinculacion`, `tipo_empleado`)"+
+                    " VALUES (?, ?, ?, ?, ?, ?, now(), ?);");
             st.setString(1, empl.getCodigoE());
             st.setString(2, empl.getNombreP());
             st.setString(3, empl.getDocumento());
             st.setString(4, empl.getTelefono());
-            st.setString(5, empl.getDireccionE());
+            st.setString(5, empl.getDireccion());
             st.setString(6, empl.getClave());
             st.setString(7, empl.getTipoEmp().name()); 
             st.executeUpdate();
@@ -42,7 +43,7 @@ public class DAOEmpleado extends Conexion implements CRUD<Empleado>{
             st.setString(1, empl.getNombreP());
             st.setString(2, empl.getDocumento());
             st.setString(3, empl.getTelefono());
-            st.setString(4, empl.getDireccionE());
+            st.setString(4, empl.getDireccion());
             st.setString(5, empl.getClave());
             st.setString(6, empl.getTipoEmp().name()); 
             st.setString(7, empl.getCodigoE());
@@ -80,9 +81,9 @@ public class DAOEmpleado extends Conexion implements CRUD<Empleado>{
                 emple.setNombreP(rs.getString("nombres"));
                 emple.setDocumento(rs.getString("documento"));
                 emple.setTelefono(rs.getString("telefono"));
-                emple.setDireccionE(rs.getString("direccion"));
+                emple.setDireccion(rs.getString("direccion"));
                 emple.setClave(rs.getString("clave"));                
-                emple.setFechaVinculacion(rs.getDate("fecha_vinculacion").toLocalDate());
+                emple.setFechaValidacion(rs.getDate("fecha_vinculacion").toLocalDate());
                 emple.setTipoEmp(TipoEmpleado.valueOf(rs.getString("tipo_empleado")));
                 lista.add(emple);
             }
@@ -95,15 +96,21 @@ public class DAOEmpleado extends Conexion implements CRUD<Empleado>{
         }
         return lista;
     }
-    
-    @Override
-    public List<Empleado> buscarpor(String txt) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
+
     @Override
     public Empleado buscarporid(int t) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public List<Empleado> buscarpor(String t) throws Exception {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Empleado buscarporcod(String t) throws Exception {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
 }
 

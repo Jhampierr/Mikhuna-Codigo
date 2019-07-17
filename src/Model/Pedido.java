@@ -48,14 +48,4 @@ public class Pedido {
     public void setDempleado(Empleado dempleado) {
         this.dempleado = dempleado;
     }
-
-    public EstadoPedido getEstadoPed() {
-        return estadoPed;
-    }
-
-    public void setEstadoPed(EstadoPedido estadoPed) {
-        this.estadoPed = estadoPed;
-    }
-    
-    
 }

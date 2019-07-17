@@ -11,6 +11,7 @@ public interface CRUD<T> {
     public List<T> listar() throws Exception;
     
     //extra
-    public List<T> buscarpor(String txt);
-    public T buscarporid(int t);
+    public List<T> buscarpor(String t) throws Exception;
+    public T buscarporid(int t) throws Exception;
+    public T buscarporcod(String t) throws Exception;
 }
