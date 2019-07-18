@@ -1,26 +1,18 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Controlador;
 
 import Model.TipoAlimento;
 import javax.swing.DefaultComboBoxModel;
 
-/**
- *
- * @author Alonso
- */
 public class PlatosIndividuales extends javax.swing.JDialog {
 
-    /**
-     * Creates new form PlatosIndividuales
-     */
     public PlatosIndividuales(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        loadComboBox();
+        this.setTitle("Mikhuna");
+        this.setSize(800, 500);
+        this.setResizable(false);
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -32,102 +24,106 @@ public class PlatosIndividuales extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jcmb_tipoPI = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jbtn_atrasU = new javax.swing.JButton();
+        jbtn_crearnuevoU = new javax.swing.JButton();
+        jbtn_editarU = new javax.swing.JButton();
+        jbtn_eliminarU = new javax.swing.JButton();
+        jbtn_exportarU = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jbtn_buscarPI = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        getContentPane().setLayout(null);
 
-        jButton1.setText("<<");
+        jTextField1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        getContentPane().add(jTextField1);
+        jTextField1.setBounds(60, 120, 235, 30);
 
-        jButton2.setText("Nuevo");
-
-        jButton3.setText("Editar");
-
-        jButton4.setText("Eliminar");
-
-        jButton5.setText("Exportar");
-
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
-
-        jLabel1.setText("BUSCAR");
+        jcmb_tipoPI.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        getContentPane().add(jcmb_tipoPI);
+        jcmb_tipoPI.setBounds(540, 120, 130, 30);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "ALIMENTO", "PRECIO", "TIPO", "ULTIMA EDICION"
+                "CODIGO", "ALIMENTO", "PRECIO", "TIPO", "ULTIMA EDICION"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 718, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel1)
-                            .addComponent(jButton1))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(64, 64, 64)
-                                .addComponent(jButton2)
-                                .addGap(59, 59, 59)
-                                .addComponent(jButton3)
-                                .addGap(67, 67, 67)
-                                .addComponent(jButton4))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(53, 53, 53)
-                        .addComponent(jButton5)))
-                .addContainerGap(42, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4)
-                    .addComponent(jButton5))
-                .addGap(32, 32, 32)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(64, 64, 64)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(41, Short.MAX_VALUE))
-        );
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(50, 180, 710, 280);
+
+        jbtn_atrasU.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jbtn_atrasU.setText("<<");
+        jbtn_atrasU.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtn_atrasUActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jbtn_atrasU);
+        jbtn_atrasU.setBounds(10, 10, 60, 40);
+
+        jbtn_crearnuevoU.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        jbtn_crearnuevoU.setText("<html> <body> <div style= \"text-align: center; color: black;\"> <p>Crear</p> <p>Nuevo</p> </div> </body> </html> ");
+        jbtn_crearnuevoU.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtn_crearnuevoUActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jbtn_crearnuevoU);
+        jbtn_crearnuevoU.setBounds(70, 10, 100, 40);
+
+        jbtn_editarU.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        jbtn_editarU.setText("Editar");
+        jbtn_editarU.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtn_editarUActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jbtn_editarU);
+        jbtn_editarU.setBounds(170, 10, 70, 40);
+
+        jbtn_eliminarU.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        jbtn_eliminarU.setText("Eliminar");
+        getContentPane().add(jbtn_eliminarU);
+        jbtn_eliminarU.setBounds(240, 10, 80, 40);
+
+        jbtn_exportarU.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        jbtn_exportarU.setText("Exportar");
+        getContentPane().add(jbtn_exportarU);
+        jbtn_exportarU.setBounds(320, 10, 80, 40);
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel2.setText("LISTA DE ALIMENTOS");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(340, 80, 140, 17);
+
+        jbtn_buscarPI.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jbtn_buscarPI.setText("BUSCAR");
+        getContentPane().add(jbtn_buscarPI);
+        jbtn_buscarPI.setBounds(320, 120, 80, 30);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    private void jbtn_crearnuevoUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_crearnuevoUActionPerformed
+
+    }//GEN-LAST:event_jbtn_crearnuevoUActionPerformed
+
+    private void jbtn_editarUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_editarUActionPerformed
+
+    }//GEN-LAST:event_jbtn_editarUActionPerformed
+
+    private void jbtn_atrasUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_atrasUActionPerformed
+        this.setVisible(false);
+    }//GEN-LAST:event_jbtn_atrasUActionPerformed
 
     /**
      * @param args the command line arguments
@@ -172,19 +168,20 @@ public class PlatosIndividuales extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JComboBox<TipoAlimento> jComboBox1;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JButton jbtn_atrasU;
+    private javax.swing.JButton jbtn_buscarPI;
+    private javax.swing.JButton jbtn_crearnuevoU;
+    private javax.swing.JButton jbtn_editarU;
+    private javax.swing.JButton jbtn_eliminarU;
+    private javax.swing.JButton jbtn_exportarU;
+    private javax.swing.JComboBox<TipoAlimento> jcmb_tipoPI;
     // End of variables declaration//GEN-END:variables
 
     private void loadComboBox() {
-        jComboBox1.setModel(new DefaultComboBoxModel<>(TipoAlimento.values()));
+        jcmb_tipoPI.setModel(new DefaultComboBoxModel<>(TipoAlimento.values()));
     }
 }

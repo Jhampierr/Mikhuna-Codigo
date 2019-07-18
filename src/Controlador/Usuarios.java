@@ -5,18 +5,16 @@
  */
 package Controlador;
 
-/**
- *
- * @author Alonso
- */
 public class Usuarios extends javax.swing.JDialog {
-
-    /**
-     * Creates new form Usuarios
-     */
+    UsuariosCE usuariosce = new UsuariosCE(new javax.swing.JFrame(), true);
+    
     public Usuarios(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        this.setTitle("Mikhuna");
+        this.setSize(800, 500);
+        this.setResizable(false);
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -28,23 +26,24 @@ public class Usuarios extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        jbtn_atrasU = new javax.swing.JButton();
+        jbtn_crearnuevoU = new javax.swing.JButton();
+        jbtn_editarU = new javax.swing.JButton();
+        jbtn_eliminarU = new javax.swing.JButton();
+        jbtn_exportarU = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        getContentPane().setLayout(null);
 
-        jButton4.setText("Exportar");
-
-        jButton5.setText("<<");
-
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel1.setText("LISTA DE USUARIOS");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(340, 90, 140, 17);
 
+        jTable1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -63,65 +62,54 @@ public class Usuarios extends javax.swing.JDialog {
         });
         jScrollPane1.setViewportView(jTable1);
 
-        jButton1.setText("Crear Nuevo");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(50, 130, 710, 330);
+
+        jbtn_atrasU.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jbtn_atrasU.setText("<<");
+        getContentPane().add(jbtn_atrasU);
+        jbtn_atrasU.setBounds(10, 10, 60, 40);
+
+        jbtn_crearnuevoU.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        jbtn_crearnuevoU.setText("<html> <body> <div style= \"text-align: center; color: black;\"> <p>Crear</p> <p>Nuevo</p> </div> </body> </html> ");
+        jbtn_crearnuevoU.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jbtn_crearnuevoUActionPerformed(evt);
             }
         });
+        getContentPane().add(jbtn_crearnuevoU);
+        jbtn_crearnuevoU.setBounds(70, 10, 100, 40);
 
-        jButton2.setText("Editar");
+        jbtn_editarU.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        jbtn_editarU.setText("Editar");
+        jbtn_editarU.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtn_editarUActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jbtn_editarU);
+        jbtn_editarU.setBounds(170, 10, 70, 40);
 
-        jButton3.setText("Eliminar");
+        jbtn_eliminarU.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        jbtn_eliminarU.setText("Eliminar");
+        getContentPane().add(jbtn_eliminarU);
+        jbtn_eliminarU.setBounds(240, 10, 80, 40);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(jButton5)
-                        .addGap(26, 26, 26)
-                        .addComponent(jButton1)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton2)
-                        .addGap(55, 55, 55)
-                        .addComponent(jButton3)
-                        .addGap(36, 36, 36)
-                        .addComponent(jButton4))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(344, 344, 344)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 735, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(35, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4)
-                    .addComponent(jButton5))
-                .addGap(35, 35, 35)
-                .addComponent(jLabel1)
-                .addGap(28, 28, 28)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 444, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(37, Short.MAX_VALUE))
-        );
+        jbtn_exportarU.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        jbtn_exportarU.setText("Exportar");
+        getContentPane().add(jbtn_exportarU);
+        jbtn_exportarU.setBounds(320, 10, 80, 40);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void jbtn_crearnuevoUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_crearnuevoUActionPerformed
+
+    }//GEN-LAST:event_jbtn_crearnuevoUActionPerformed
+
+    private void jbtn_editarUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_editarUActionPerformed
+
+    }//GEN-LAST:event_jbtn_editarUActionPerformed
 
     /**
      * @param args the command line arguments
@@ -149,6 +137,9 @@ public class Usuarios extends javax.swing.JDialog {
             java.util.logging.Logger.getLogger(Usuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -166,13 +157,13 @@ public class Usuarios extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JButton jbtn_atrasU;
+    private javax.swing.JButton jbtn_crearnuevoU;
+    private javax.swing.JButton jbtn_editarU;
+    private javax.swing.JButton jbtn_eliminarU;
+    private javax.swing.JButton jbtn_exportarU;
     // End of variables declaration//GEN-END:variables
 }

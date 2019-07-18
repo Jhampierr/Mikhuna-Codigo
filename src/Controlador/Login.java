@@ -1,3 +1,4 @@
+
 package Controlador;
 
 import Services.Seguridad;
@@ -5,6 +6,7 @@ import javax.swing.JOptionPane;
 
 public class Login extends javax.swing.JDialog {
 
+    String var;
     public Login(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -14,20 +16,18 @@ public class Login extends javax.swing.JDialog {
         setLocationRelativeTo(null);
     }
 
-    //MenuPrincipal menu= new MenuPrincipal();
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jDesktopPane1 = new javax.swing.JDesktopPane();
-        jbtn_login = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
-        jDesktopPane2 = new javax.swing.JDesktopPane();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jtxt_usuario = new javax.swing.JTextField();
         jtxt_clave = new javax.swing.JTextField();
+        jbtn_login = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jDesktopPane2 = new javax.swing.JDesktopPane();
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
@@ -43,6 +43,14 @@ public class Login extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(null);
 
+        jtxt_usuario.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        getContentPane().add(jtxt_usuario);
+        jtxt_usuario.setBounds(140, 140, 90, 30);
+
+        jtxt_clave.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        getContentPane().add(jtxt_clave);
+        jtxt_clave.setBounds(140, 200, 90, 30);
+
         jbtn_login.setText("INGRESAR");
         jbtn_login.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -50,38 +58,27 @@ public class Login extends javax.swing.JDialog {
             }
         });
         getContentPane().add(jbtn_login);
-        jbtn_login.setBounds(90, 270, 83, 23);
-
-        jLabel4.setText("ICONO");
-        getContentPane().add(jLabel4);
-        jLabel4.setBounds(110, 90, 34, 14);
-
-        jDesktopPane2.setBackground(new java.awt.Color(51, 51, 255));
-
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("USUARIO");
-        jDesktopPane2.add(jLabel5);
-        jLabel5.setBounds(90, 150, 51, 15);
+        jbtn_login.setBounds(90, 270, 100, 30);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("CONTRASEÑA");
-        jDesktopPane2.add(jLabel2);
-        jLabel2.setBounds(70, 200, 77, 15);
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(40, 210, 77, 15);
 
-        jtxt_usuario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtxt_usuarioActionPerformed(evt);
-            }
-        });
-        jDesktopPane2.add(jtxt_usuario);
-        jtxt_usuario.setBounds(160, 150, 70, 20);
-        jDesktopPane2.add(jtxt_clave);
-        jtxt_clave.setBounds(160, 200, 70, 20);
+        jLabel4.setText("ICONO");
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(110, 30, 80, 90);
 
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("USUARIO");
+        getContentPane().add(jLabel5);
+        jLabel5.setBounds(40, 150, 51, 15);
+
+        jDesktopPane2.setBackground(new java.awt.Color(51, 51, 255));
         getContentPane().add(jDesktopPane2);
-        jDesktopPane2.setBounds(-60, 10, 330, 350);
+        jDesktopPane2.setBounds(0, 0, 270, 350);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -89,9 +86,9 @@ public class Login extends javax.swing.JDialog {
     private void jbtn_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_loginActionPerformed
         Seguridad seg= new Seguridad();
         try {
-            String var=seg.validacion(jtxt_usuario.getText(), jtxt_clave.getText());
-            if(var.equals("complete los datos") || var.equals("Usuario o Password erroneo")){
-                JOptionPane.showMessageDialog(null, "Error");
+            var=seg.validacion(jtxt_usuario.getText(), jtxt_clave.getText());
+            if(var.equals("complete los datos") || var.equals("Usuario o contraseña incorrecta")){
+                JOptionPane.showMessageDialog(null, var);
             } else {
                 JOptionPane.showMessageDialog(null, "Bienveniedo "+var);
                 this.setVisible(false);
@@ -100,10 +97,6 @@ public class Login extends javax.swing.JDialog {
            JOptionPane.showMessageDialog(null, "Error");
         }
     }//GEN-LAST:event_jbtn_loginActionPerformed
-
-    private void jtxt_usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxt_usuarioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtxt_usuarioActionPerformed
 
     /**
      * @param args the command line arguments
