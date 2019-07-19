@@ -21,7 +21,7 @@ public class PersonalCE extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         this.setTitle("Mikhuna");
-        this.setSize(550, 350);
+        this.setSize(550, 500);
         this.setResizable(false);
         setLocationRelativeTo(null);
     }
@@ -37,12 +37,16 @@ public class PersonalCE extends javax.swing.JDialog {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         jtxt_codigoP = new javax.swing.JTextField();
         jtxt_nombreP = new javax.swing.JTextField();
-        jcmb_tipoP = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jbtn_confirmarP = new javax.swing.JButton();
+        jbtn_cancelarP = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        jtxt_documentoP = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        jtxt_telefonoP = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        jtxt_direccionP = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -50,80 +54,80 @@ public class PersonalCE extends javax.swing.JDialog {
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel1.setText("CODIGO");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(60, 60, 60, 15);
+        jLabel1.setBounds(60, 50, 60, 15);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel2.setText("NOMBRE");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(60, 120, 50, 15);
-
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel3.setText("TIPO");
-        getContentPane().add(jLabel3);
-        jLabel3.setBounds(60, 180, 40, 15);
+        jLabel2.setBounds(60, 100, 50, 15);
 
         jtxt_codigoP.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jtxt_codigoP.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtxt_codigoPActionPerformed(evt);
-            }
-        });
         getContentPane().add(jtxt_codigoP);
-        jtxt_codigoP.setBounds(140, 50, 340, 30);
+        jtxt_codigoP.setBounds(170, 40, 340, 30);
 
         jtxt_nombreP.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jtxt_nombreP.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtxt_nombrePActionPerformed(evt);
-            }
-        });
         getContentPane().add(jtxt_nombreP);
-        jtxt_nombreP.setBounds(140, 110, 340, 30);
+        jtxt_nombreP.setBounds(170, 90, 340, 30);
 
-        jcmb_tipoP.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jcmb_tipoP.addActionListener(new java.awt.event.ActionListener() {
+        jbtn_confirmarP.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jbtn_confirmarP.setText("CONFIRMAR");
+        jbtn_confirmarP.setPreferredSize(new java.awt.Dimension(90, 20));
+        jbtn_confirmarP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jcmb_tipoPActionPerformed(evt);
+                jbtn_confirmarPActionPerformed(evt);
             }
         });
-        getContentPane().add(jcmb_tipoP);
-        jcmb_tipoP.setBounds(140, 170, 110, 30);
+        getContentPane().add(jbtn_confirmarP);
+        jbtn_confirmarP.setBounds(160, 410, 100, 40);
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jButton1.setText("CONFIRMAR");
-        jButton1.setPreferredSize(new java.awt.Dimension(90, 20));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jbtn_cancelarP.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jbtn_cancelarP.setText("CANCELAR");
+        jbtn_cancelarP.setPreferredSize(new java.awt.Dimension(90, 20));
+        jbtn_cancelarP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jbtn_cancelarPActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1);
-        jButton1.setBounds(160, 270, 100, 40);
+        getContentPane().add(jbtn_cancelarP);
+        jbtn_cancelarP.setBounds(310, 410, 100, 40);
 
-        jButton2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jButton2.setText("CANCELAR");
-        jButton2.setPreferredSize(new java.awt.Dimension(90, 20));
-        getContentPane().add(jButton2);
-        jButton2.setBounds(310, 270, 100, 40);
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel5.setText("DOCUMENTO");
+        getContentPane().add(jLabel5);
+        jLabel5.setBounds(60, 150, 90, 15);
+
+        jtxt_documentoP.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        getContentPane().add(jtxt_documentoP);
+        jtxt_documentoP.setBounds(170, 140, 340, 30);
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel6.setText("TELEFONO");
+        getContentPane().add(jLabel6);
+        jLabel6.setBounds(60, 200, 90, 15);
+
+        jtxt_telefonoP.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        getContentPane().add(jtxt_telefonoP);
+        jtxt_telefonoP.setBounds(170, 190, 340, 30);
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel7.setText("DIRECCION");
+        getContentPane().add(jLabel7);
+        jLabel7.setBounds(60, 250, 80, 15);
+
+        jtxt_direccionP.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        getContentPane().add(jtxt_direccionP);
+        jtxt_direccionP.setBounds(170, 240, 340, 30);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jtxt_codigoPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxt_codigoPActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtxt_codigoPActionPerformed
+    private void jbtn_confirmarPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_confirmarPActionPerformed
+        this.setVisible(false);
+    }//GEN-LAST:event_jbtn_confirmarPActionPerformed
 
-    private void jtxt_nombrePActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxt_nombrePActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtxt_nombrePActionPerformed
-
-    private void jcmb_tipoPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcmb_tipoPActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jcmb_tipoPActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void jbtn_cancelarPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_cancelarPActionPerformed
+        this.setVisible(false);
+    }//GEN-LAST:event_jbtn_cancelarPActionPerformed
 
     /**
      * @param args the command line arguments
@@ -169,17 +173,18 @@ public class PersonalCE extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JComboBox<TipoEmpleado> jcmb_tipoP;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JButton jbtn_cancelarP;
+    private javax.swing.JButton jbtn_confirmarP;
     private javax.swing.JTextField jtxt_codigoP;
+    private javax.swing.JTextField jtxt_direccionP;
+    private javax.swing.JTextField jtxt_documentoP;
     private javax.swing.JTextField jtxt_nombreP;
+    private javax.swing.JTextField jtxt_telefonoP;
     // End of variables declaration//GEN-END:variables
 
-    private void loadComboBox() {
-        jcmb_tipoP.setModel(new DefaultComboBoxModel<>(TipoEmpleado.values()));
-    }
 }

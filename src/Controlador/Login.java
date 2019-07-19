@@ -22,10 +22,10 @@ public class Login extends javax.swing.JDialog {
 
         jDesktopPane1 = new javax.swing.JDesktopPane();
         jtxt_usuario = new javax.swing.JTextField();
-        jtxt_clave = new javax.swing.JTextField();
         jbtn_login = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        jpsw_clave = new javax.swing.JPasswordField();
         jLabel5 = new javax.swing.JLabel();
         jDesktopPane2 = new javax.swing.JDesktopPane();
 
@@ -47,10 +47,6 @@ public class Login extends javax.swing.JDialog {
         getContentPane().add(jtxt_usuario);
         jtxt_usuario.setBounds(140, 140, 90, 30);
 
-        jtxt_clave.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        getContentPane().add(jtxt_clave);
-        jtxt_clave.setBounds(140, 200, 90, 30);
-
         jbtn_login.setText("INGRESAR");
         jbtn_login.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -70,6 +66,10 @@ public class Login extends javax.swing.JDialog {
         getContentPane().add(jLabel4);
         jLabel4.setBounds(110, 30, 80, 90);
 
+        jpsw_clave.setToolTipText("");
+        getContentPane().add(jpsw_clave);
+        jpsw_clave.setBounds(140, 200, 90, 30);
+
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("USUARIO");
@@ -86,15 +86,15 @@ public class Login extends javax.swing.JDialog {
     private void jbtn_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_loginActionPerformed
         Seguridad seg= new Seguridad();
         try {
-            var=seg.validacion(jtxt_usuario.getText(), jtxt_clave.getText());
+            var=seg.validacion(jtxt_usuario.getText(), jpsw_clave.getSelectedText());
             if(var.equals("complete los datos") || var.equals("Usuario o contraseña incorrecta")){
                 JOptionPane.showMessageDialog(null, var);
             } else {
                 JOptionPane.showMessageDialog(null, "Bienveniedo "+var);
                 this.setVisible(false);
             }
-        } catch (Exception IOException) {
-           JOptionPane.showMessageDialog(null, "Error");
+        } catch (Exception e) {
+           JOptionPane.showMessageDialog(null, "Error "+e);
         }
     }//GEN-LAST:event_jbtn_loginActionPerformed
 
@@ -147,7 +147,7 @@ public class Login extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JButton jbtn_login;
-    private javax.swing.JTextField jtxt_clave;
+    private javax.swing.JPasswordField jpsw_clave;
     private javax.swing.JTextField jtxt_usuario;
     // End of variables declaration//GEN-END:variables
 }

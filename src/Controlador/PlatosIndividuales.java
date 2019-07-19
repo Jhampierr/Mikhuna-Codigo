@@ -27,12 +27,12 @@ public class PlatosIndividuales extends javax.swing.JDialog {
         jTextField1 = new javax.swing.JTextField();
         jcmb_tipoPI = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jbtn_atrasU = new javax.swing.JButton();
-        jbtn_crearnuevoU = new javax.swing.JButton();
-        jbtn_editarU = new javax.swing.JButton();
-        jbtn_eliminarU = new javax.swing.JButton();
-        jbtn_exportarU = new javax.swing.JButton();
+        jtbl_buscarPI = new javax.swing.JTable();
+        jbtn_atrasPI = new javax.swing.JButton();
+        jbtn_crearnuevoPI = new javax.swing.JButton();
+        jbtn_editarPI = new javax.swing.JButton();
+        jbtn_eliminarPI = new javax.swing.JButton();
+        jbtn_exportarPI = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jbtn_buscarPI = new javax.swing.JButton();
 
@@ -47,7 +47,7 @@ public class PlatosIndividuales extends javax.swing.JDialog {
         getContentPane().add(jcmb_tipoPI);
         jcmb_tipoPI.setBounds(540, 120, 130, 30);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jtbl_buscarPI.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -55,50 +55,50 @@ public class PlatosIndividuales extends javax.swing.JDialog {
                 "CODIGO", "ALIMENTO", "PRECIO", "TIPO", "ULTIMA EDICION"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jtbl_buscarPI);
 
         getContentPane().add(jScrollPane1);
         jScrollPane1.setBounds(50, 180, 710, 280);
 
-        jbtn_atrasU.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jbtn_atrasU.setText("<<");
-        jbtn_atrasU.addActionListener(new java.awt.event.ActionListener() {
+        jbtn_atrasPI.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jbtn_atrasPI.setText("<<");
+        jbtn_atrasPI.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbtn_atrasUActionPerformed(evt);
+                jbtn_atrasPIActionPerformed(evt);
             }
         });
-        getContentPane().add(jbtn_atrasU);
-        jbtn_atrasU.setBounds(10, 10, 60, 40);
+        getContentPane().add(jbtn_atrasPI);
+        jbtn_atrasPI.setBounds(10, 10, 60, 40);
 
-        jbtn_crearnuevoU.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-        jbtn_crearnuevoU.setText("<html> <body> <div style= \"text-align: center; color: black;\"> <p>Crear</p> <p>Nuevo</p> </div> </body> </html> ");
-        jbtn_crearnuevoU.addActionListener(new java.awt.event.ActionListener() {
+        jbtn_crearnuevoPI.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        jbtn_crearnuevoPI.setText("<html> <body> <div style= \"text-align: center; color: black;\"> <p>Crear</p> <p>Nuevo</p> </div> </body> </html> ");
+        jbtn_crearnuevoPI.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbtn_crearnuevoUActionPerformed(evt);
+                jbtn_crearnuevoPIActionPerformed(evt);
             }
         });
-        getContentPane().add(jbtn_crearnuevoU);
-        jbtn_crearnuevoU.setBounds(70, 10, 100, 40);
+        getContentPane().add(jbtn_crearnuevoPI);
+        jbtn_crearnuevoPI.setBounds(70, 10, 100, 40);
 
-        jbtn_editarU.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-        jbtn_editarU.setText("Editar");
-        jbtn_editarU.addActionListener(new java.awt.event.ActionListener() {
+        jbtn_editarPI.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        jbtn_editarPI.setText("Editar");
+        jbtn_editarPI.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbtn_editarUActionPerformed(evt);
+                jbtn_editarPIActionPerformed(evt);
             }
         });
-        getContentPane().add(jbtn_editarU);
-        jbtn_editarU.setBounds(170, 10, 70, 40);
+        getContentPane().add(jbtn_editarPI);
+        jbtn_editarPI.setBounds(170, 10, 70, 40);
 
-        jbtn_eliminarU.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-        jbtn_eliminarU.setText("Eliminar");
-        getContentPane().add(jbtn_eliminarU);
-        jbtn_eliminarU.setBounds(240, 10, 80, 40);
+        jbtn_eliminarPI.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        jbtn_eliminarPI.setText("Eliminar");
+        getContentPane().add(jbtn_eliminarPI);
+        jbtn_eliminarPI.setBounds(240, 10, 80, 40);
 
-        jbtn_exportarU.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-        jbtn_exportarU.setText("Exportar");
-        getContentPane().add(jbtn_exportarU);
-        jbtn_exportarU.setBounds(320, 10, 80, 40);
+        jbtn_exportarPI.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        jbtn_exportarPI.setText("Exportar");
+        getContentPane().add(jbtn_exportarPI);
+        jbtn_exportarPI.setBounds(320, 10, 80, 40);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setText("LISTA DE ALIMENTOS");
@@ -113,17 +113,17 @@ public class PlatosIndividuales extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jbtn_crearnuevoUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_crearnuevoUActionPerformed
+    private void jbtn_crearnuevoPIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_crearnuevoPIActionPerformed
 
-    }//GEN-LAST:event_jbtn_crearnuevoUActionPerformed
+    }//GEN-LAST:event_jbtn_crearnuevoPIActionPerformed
 
-    private void jbtn_editarUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_editarUActionPerformed
+    private void jbtn_editarPIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_editarPIActionPerformed
 
-    }//GEN-LAST:event_jbtn_editarUActionPerformed
+    }//GEN-LAST:event_jbtn_editarPIActionPerformed
 
-    private void jbtn_atrasUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_atrasUActionPerformed
+    private void jbtn_atrasPIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_atrasPIActionPerformed
         this.setVisible(false);
-    }//GEN-LAST:event_jbtn_atrasUActionPerformed
+    }//GEN-LAST:event_jbtn_atrasPIActionPerformed
 
     /**
      * @param args the command line arguments
@@ -170,15 +170,15 @@ public class PlatosIndividuales extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JButton jbtn_atrasU;
+    private javax.swing.JButton jbtn_atrasPI;
     private javax.swing.JButton jbtn_buscarPI;
-    private javax.swing.JButton jbtn_crearnuevoU;
-    private javax.swing.JButton jbtn_editarU;
-    private javax.swing.JButton jbtn_eliminarU;
-    private javax.swing.JButton jbtn_exportarU;
+    private javax.swing.JButton jbtn_crearnuevoPI;
+    private javax.swing.JButton jbtn_editarPI;
+    private javax.swing.JButton jbtn_eliminarPI;
+    private javax.swing.JButton jbtn_exportarPI;
     private javax.swing.JComboBox<TipoAlimento> jcmb_tipoPI;
+    private javax.swing.JTable jtbl_buscarPI;
     // End of variables declaration//GEN-END:variables
 
     private void loadComboBox() {

@@ -98,6 +98,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jtbtn_caja.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         jtbtn_caja.setText("                  Caja              ");
+        jtbtn_caja.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtbtn_cajaActionPerformed(evt);
+            }
+        });
         jMenu2.add(jtbtn_caja);
 
         jbtn_cocina.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
@@ -203,6 +208,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
             individuales.setVisible(false);
         }
     }//GEN-LAST:event_jbtn_alimentosIActionPerformed
+
+    private void jtbtn_cajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtbtn_cajaActionPerformed
+        ListaPedido pedidos= new ListaPedido(new javax.swing.JFrame(), true);
+        if(login.var.equals("ADMINISTRADOR") && login.var.equals("COCINERO")){
+            pedidos.setVisible(true);
+        } else{
+            pedidos.setVisible(false);
+        }
+    }//GEN-LAST:event_jtbtn_cajaActionPerformed
 
     /**
      * @param args the command line arguments
