@@ -10,7 +10,7 @@ public class PlatosIndividuales extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         this.setTitle("Mikhuna");
-        this.setSize(800, 500);
+        this.setSize(950, 550);
         this.setResizable(false);
         setLocationRelativeTo(null);
     }
@@ -27,7 +27,7 @@ public class PlatosIndividuales extends javax.swing.JDialog {
         jTextField1 = new javax.swing.JTextField();
         jcmb_tipoPI = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jtbl_buscarPI = new javax.swing.JTable();
+        jtbl_listaAlimentos = new javax.swing.JTable();
         jbtn_atrasPI = new javax.swing.JButton();
         jbtn_crearnuevoPI = new javax.swing.JButton();
         jbtn_editarPI = new javax.swing.JButton();
@@ -45,9 +45,9 @@ public class PlatosIndividuales extends javax.swing.JDialog {
 
         jcmb_tipoPI.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         getContentPane().add(jcmb_tipoPI);
-        jcmb_tipoPI.setBounds(540, 120, 130, 30);
+        jcmb_tipoPI.setBounds(680, 120, 170, 30);
 
-        jtbl_buscarPI.setModel(new javax.swing.table.DefaultTableModel(
+        jtbl_listaAlimentos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -55,10 +55,10 @@ public class PlatosIndividuales extends javax.swing.JDialog {
                 "CODIGO", "ALIMENTO", "PRECIO", "TIPO", "ULTIMA EDICION"
             }
         ));
-        jScrollPane1.setViewportView(jtbl_buscarPI);
+        jScrollPane1.setViewportView(jtbl_listaAlimentos);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(50, 180, 710, 280);
+        jScrollPane1.setBounds(50, 180, 850, 280);
 
         jbtn_atrasPI.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jbtn_atrasPI.setText("<<");
@@ -103,7 +103,7 @@ public class PlatosIndividuales extends javax.swing.JDialog {
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setText("LISTA DE ALIMENTOS");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(340, 80, 140, 17);
+        jLabel2.setBounds(420, 80, 140, 17);
 
         jbtn_buscarPI.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jbtn_buscarPI.setText("BUSCAR");
@@ -178,7 +178,7 @@ public class PlatosIndividuales extends javax.swing.JDialog {
     private javax.swing.JButton jbtn_eliminarPI;
     private javax.swing.JButton jbtn_exportarPI;
     private javax.swing.JComboBox<TipoAlimento> jcmb_tipoPI;
-    private javax.swing.JTable jtbl_buscarPI;
+    private javax.swing.JTable jtbl_listaAlimentos;
     // End of variables declaration//GEN-END:variables
 
     private void loadComboBox() {
