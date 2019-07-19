@@ -1,29 +1,26 @@
 
 package Model;
 
-import java.time.LocalDate;
-import java.util.List;
-
-public class DetallePedido {
-    private LocalDate fechaHoraInicio;
-    private LocalDate fechaHoraCocinado;
+public class DetallePedido extends Pedido{
+    private double total;
     private int cantAlimento;
-    private List<Alimento> alimentos;
+    private Alimento dalimentos;
+    private Pedido dpedido;
 
-    public LocalDate getFechaHoraInicio() {
-        return fechaHoraInicio;
+    public Pedido getDpedido() {
+        return dpedido;
     }
 
-    public void setFechaHoraInicio(LocalDate fechaHoraInicio) {
-        this.fechaHoraInicio = fechaHoraInicio;
+    public void setDpedido(Pedido dpedido) {
+        this.dpedido = dpedido;
     }
 
-    public LocalDate getFechaHoraCocinado() {
-        return fechaHoraCocinado;
+    public Alimento getDalimentos() {
+        return dalimentos;
     }
 
-    public void setFechaHoraCocinado(LocalDate fechaHoraCocinado) {
-        this.fechaHoraCocinado = fechaHoraCocinado;
+    public void setDalimentos(Alimento dalimentos) {
+        this.dalimentos = dalimentos;
     }
 
     public int getCantAlimento() {
@@ -33,13 +30,13 @@ public class DetallePedido {
     public void setCantAlimento(int cantAlimento) {
         this.cantAlimento = cantAlimento;
     }
-
-    public List<Alimento> getAlimentos() {
-        return alimentos;
+    
+    public double getTotal() {
+        return total;
     }
 
-    public void setAlimentos(List<Alimento> alimentos) {
-        this.alimentos = alimentos;
+    public void setTotal(double total) {
+        this.total = total;
     }
     
 }
