@@ -1,17 +1,62 @@
-
 package Controlador;
 
+import Dao.DAOEmpleado;
+import Dao.DAOMozo;
+import Model.Empleado;
+import Model.TipoEmpleado;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 public class Personal extends javax.swing.JDialog {
+
     PersonalCE personales = new PersonalCE(new javax.swing.JFrame(), true);
-    
+
+    @Override
+    public void setVisible(boolean bln) {
+        super.setVisible(bln);
+        //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void refresh() {
+        DefaultTableModel model = (DefaultTableModel) jtbl_personalP.getModel();
+        model.setRowCount(0);
+
+        try {
+            DAOMozo tblemp = new DAOMozo();
+
+            for (Empleado per : (List<Empleado>) tblemp.listar()) {
+                Object[] ob = new Object[model.getColumnCount()];
+                ob[0] = per.getCodigoE();
+                ob[1] = per.getNombreP();
+                ob[2] = per.getDocumento();
+                ob[3] = per.getTelefono();
+                ob[4] = per.getDireccion();
+                ob[5] = per.getTipoEmp();
+                ob[6] = per.getFechaValidacion();
+                model.addRow(ob);
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "error");
+        }
+
+    }
+
     public Personal(java.awt.Frame parent, boolean modal) {
+
         super(parent, modal);
         initComponents();
         this.setTitle("Mikhuna");
         this.setSize(950, 500);
         this.setResizable(false);
         setLocationRelativeTo(null);
-        jtbl_personalP.getTableHeader().setPreferredSize(new java.awt.Dimension(0,30));
+        jtbl_personalP.getTableHeader().setPreferredSize(new java.awt.Dimension(0, 30));
+        refresh();
+
     }
 
     @SuppressWarnings("unchecked")
@@ -83,11 +128,21 @@ public class Personal extends javax.swing.JDialog {
 
         jbtn_eliminarP.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         jbtn_eliminarP.setText("Eliminar");
+        jbtn_eliminarP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtn_eliminarPActionPerformed(evt);
+            }
+        });
         getContentPane().add(jbtn_eliminarP);
         jbtn_eliminarP.setBounds(240, 10, 80, 40);
 
         jbtn_exportarP.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         jbtn_exportarP.setText("Exportar");
+        jbtn_exportarP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtn_exportarPActionPerformed(evt);
+            }
+        });
         getContentPane().add(jbtn_exportarP);
         jbtn_exportarP.setBounds(320, 10, 80, 40);
 
@@ -95,16 +150,58 @@ public class Personal extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbtn_crearnuevoPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_crearnuevoPActionPerformed
+
+        personales.jtxt_codigoP.setText("");
+        personales.jtxt_nombreP.setText("");
+        personales.jtxt_documentoP.setText("");
+        personales.jtxt_telefonoP.setText("");
+        personales.jtxt_direccionP.setText("");
+        personales.operacion = "crear";
         personales.setVisible(true);
+        refresh();
     }//GEN-LAST:event_jbtn_crearnuevoPActionPerformed
 
     private void jbtn_editarPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_editarPActionPerformed
+
+        DefaultTableModel model = (DefaultTableModel) jtbl_personalP.getModel();
+        int fila = jtbl_personalP.getSelectedRow();
+
+        personales.jtxt_codigoP.setText(model.getValueAt(fila, 0).toString());
+        personales.jtxt_nombreP.setText(model.getValueAt(fila, 1).toString());
+        personales.jtxt_documentoP.setText(model.getValueAt(fila, 2).toString());
+        personales.jtxt_telefonoP.setText(model.getValueAt(fila, 3).toString());
+        personales.jtxt_direccionP.setText(model.getValueAt(fila, 4).toString());
+        personales.operacion = "editar";
         personales.setVisible(true);
+        refresh();
+
     }//GEN-LAST:event_jbtn_editarPActionPerformed
 
     private void jbtn_atrasPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_atrasPActionPerformed
         this.setVisible(false);
     }//GEN-LAST:event_jbtn_atrasPActionPerformed
+
+    private void jbtn_eliminarPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_eliminarPActionPerformed
+        DefaultTableModel model = (DefaultTableModel) jtbl_personalP.getModel();
+        int fila = jtbl_personalP.getSelectedRow();
+
+        Empleado Edemp = new Empleado();
+
+        Edemp.setCodigoE(model.getValueAt(fila, 0).toString());
+
+        DAOEmpleado EDIEmp = new DAOEmpleado();
+        try {
+            EDIEmp.eliminar(Edemp);
+            JOptionPane.showMessageDialog(null, "exito");
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+        refresh();
+    }//GEN-LAST:event_jbtn_eliminarPActionPerformed
+
+    private void jbtn_exportarPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_exportarPActionPerformed
+        JOptionPane.showMessageDialog(null, "https://www.youtube.com/watch?v=KSdHTGhHrIU");
+    }//GEN-LAST:event_jbtn_exportarPActionPerformed
 
     /**
      * @param args the command line arguments
@@ -157,6 +254,6 @@ public class Personal extends javax.swing.JDialog {
     private javax.swing.JButton jbtn_editarP;
     private javax.swing.JButton jbtn_eliminarP;
     private javax.swing.JButton jbtn_exportarP;
-    private javax.swing.JTable jtbl_personalP;
+    public javax.swing.JTable jtbl_personalP;
     // End of variables declaration//GEN-END:variables
 }

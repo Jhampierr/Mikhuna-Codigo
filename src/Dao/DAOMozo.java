@@ -31,15 +31,25 @@ public class DAOMozo extends Conexion implements CRUD<Empleado>{
         List<Empleado> lista = null;
         try{
             this.conectar();
-            PreparedStatement st =  this.conexion.prepareStatement("SELECT cod_empleado, nombres, tipo_empleado FROM empleado WHERE tipo_empleado = 'MOZO'");
+            PreparedStatement st =  this.conexion.prepareStatement("SELECT * FROM empleado WHERE tipo_empleado = 'MOZO'");
             lista = new ArrayList<>();
             ResultSet rs = st.executeQuery();
             while(rs.next()){
                 Empleado emple = new Empleado();
                 emple.setCodigoE(rs.getString("cod_empleado"));
                 emple.setNombreP(rs.getString("nombres"));
+                emple.setDocumento(rs.getString("documento"));
+                emple.setTelefono(rs.getString("telefono"));
+                emple.setDireccion(rs.getString("direccion"));
+                emple.setClave(rs.getString("clave"));                
+                emple.setFechaValidacion(rs.getDate("fecha_vinculacion").toLocalDate());
                 emple.setTipoEmp(TipoEmpleado.valueOf(rs.getString("tipo_empleado")));
                 lista.add(emple);
+                /*Empleado emple = new Empleado();
+                emple.setCodigoE(rs.getString("cod_empleado"));
+                emple.setNombreP(rs.getString("nombres"));
+                emple.setTipoEmp(TipoEmpleado.valueOf(rs.getString("tipo_empleado")));
+                lista.add(emple);*/
             }
             rs.close();
             st.close();
