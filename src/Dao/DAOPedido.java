@@ -1,8 +1,8 @@
 package Dao;
 
-import Model.DetallePedido;
 import Model.EstadoPedido;
 import Model.Mesa;
+import Model.Pedido;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -10,10 +10,10 @@ import java.util.List;
 
 /** @author MIKHUNA S.A.C */
 
-public class DAOPedido extends Conexion implements CRUD<DetallePedido>{
+public class DAOPedido extends Conexion implements CRUD<Pedido>{
 
     @Override
-    public void registrar(DetallePedido t) throws Exception {
+    public void registrar(Pedido t) throws Exception {
         try{
             this.conectar();
             PreparedStatement st =  this.conexion.prepareStatement("INSERT INTO `pedido` (`cod_pedido`, `fecha_hora`, `estado`) VALUES (?, NOW(), ?);");
@@ -28,7 +28,7 @@ public class DAOPedido extends Conexion implements CRUD<DetallePedido>{
     }
 
     @Override
-    public void modificar(DetallePedido t) throws Exception {
+    public void modificar(Pedido t) throws Exception {
         try{
             this.conectar();
             PreparedStatement st =  this.conexion.prepareStatement("UPDATE  `pedido` SET , `estado` = ?," +
@@ -50,7 +50,7 @@ public class DAOPedido extends Conexion implements CRUD<DetallePedido>{
     }
 
     @Override
-    public void eliminar(DetallePedido t) throws Exception {
+    public void eliminar(Pedido t) throws Exception {
         try{
             this.conectar();
             PreparedStatement st =  this.conexion.prepareStatement("DELETE FROM `pedido` WHERE `cod_pedido` = ?;");
@@ -64,15 +64,15 @@ public class DAOPedido extends Conexion implements CRUD<DetallePedido>{
     }
 
     @Override
-    public List<DetallePedido> listar() throws Exception {
-        List<DetallePedido> lista = null;
+    public List<Pedido> listar() throws Exception {
+        List<Pedido> lista = null;
         try{
             this.conectar();
             PreparedStatement st =  this.conexion.prepareStatement("SELECT `pedido`.`cod_pedido`, `pedido`.`cod_mesa`,`pedido`.`direccion`, `factura`.`subtotal`, `pedido`.`estado`, `pedido`.`fecha_hora`, `pedido`.`fecha_hora_c` FROM `pedido`, `factura` WHERE `pedido`.`cod_pedido` = `factura`.`cod_pedido` ORDER by `pedido`.`fecha_hora`");
             lista = new ArrayList<>();
             ResultSet rs = st.executeQuery();
             while(rs.next()){
-                DetallePedido pedido = new DetallePedido();
+                Pedido pedido = new Pedido();
                 Mesa mesa = new Mesa();
                 pedido.setCodigoP(rs.getString("cod_pedido"));
                 mesa.setCodigoM(rs.getString("cod_mesa"));
@@ -95,17 +95,17 @@ public class DAOPedido extends Conexion implements CRUD<DetallePedido>{
     }
 
     @Override
-    public List<DetallePedido> buscarpor(String t) throws Exception {
+    public List<Pedido> buscarpor(String t) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public DetallePedido buscarporid(int t) throws Exception {
+    public Pedido buscarporid(int t) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public DetallePedido buscarporcod(String t) throws Exception {
+    public Pedido buscarporcod(String t) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

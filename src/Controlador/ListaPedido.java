@@ -1,8 +1,17 @@
 
 package Controlador;
 
-public class ListaPedido extends javax.swing.JDialog {
+import Dao.CRUD;
+import Dao.DAOPedido;
+import Model.Pedido;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
+public class ListaPedido extends javax.swing.JDialog {
+    
+    PedidoDetallado detalle_pedido = new PedidoDetallado(new javax.swing.JFrame(), true);
+    
     public ListaPedido(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -10,7 +19,30 @@ public class ListaPedido extends javax.swing.JDialog {
         this.setSize(1000, 600);
         this.setResizable(false);
         setLocationRelativeTo(null);
+        
         jtbl_listaPedidoP.getTableHeader().setPreferredSize(new java.awt.Dimension(0,30));
+        
+        DefaultTableModel model = (DefaultTableModel) jtbl_listaPedidoP.getModel();
+        model.setRowCount(0);
+        
+        try{
+            CRUD dao = new DAOPedido();
+            for(Pedido p : (List<Pedido>) dao.listar()){
+                    Object[] ob = new Object[model.getColumnCount()];
+                    ob[0] = p.getCodigoP();
+                    ob[1] = p.getDmesa().getCodigoM();
+                    ob[2] = p.getDireccionP();
+                    ob[3] = p.getMontoP();
+                    ob[4] = p.getEstadoPed();
+                    ob[5] = p.getFechaHoraP();
+                    ob[6] = p.getFechaHoraC();
+                    model.addRow(ob);
+            }
+            
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e.getMessage()+"ERROR");
+        }
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -58,6 +90,11 @@ public class ListaPedido extends javax.swing.JDialog {
 
         jbtn_agregarLP.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jbtn_agregarLP.setText("AGREGAR");
+        jbtn_agregarLP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtn_agregarLPActionPerformed(evt);
+            }
+        });
         getContentPane().add(jbtn_agregarLP);
         jbtn_agregarLP.setBounds(50, 510, 100, 30);
 
@@ -83,6 +120,10 @@ public class ListaPedido extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    
+    private void jbtn_agregarLPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_agregarLPActionPerformed
+        detalle_pedido.setVisible(true);        
+    }//GEN-LAST:event_jbtn_agregarLPActionPerformed
 
     /**
      * @param args the command line arguments
