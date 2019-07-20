@@ -14,7 +14,8 @@ import javax.swing.JOptionPane;
 
 public class UsuariosCE extends javax.swing.JDialog {
     Empleado emp= new Empleado();
-    private List<Empleado> listaEmpleado = new ArrayList<>();
+    //private List<Empleado> listaEmpleado = new ArrayList<>();
+    
     public UsuariosCE(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -25,6 +26,7 @@ public class UsuariosCE extends javax.swing.JDialog {
         
         DefaultComboBoxModel model = new DefaultComboBoxModel(TipoEmpleado.values());
         jcmb_tipoU.setModel(model);
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -139,6 +141,7 @@ public class UsuariosCE extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
     private void jbtn_confirmarUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_confirmarUActionPerformed
         
         emp.setCodigoE(jtxt_codigoU.getText());
@@ -218,13 +221,13 @@ public class UsuariosCE extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JButton jbtn_cancelarU;
     private javax.swing.JButton jbtn_confirmarU;
-    private javax.swing.JComboBox jcmb_tipoU;
-    private javax.swing.JTextField jtxt_claveU;
-    private javax.swing.JTextField jtxt_codigoU;
-    private javax.swing.JTextField jtxt_direccionU;
-    private javax.swing.JTextField jtxt_documentoU;
-    private javax.swing.JTextField jtxt_nombreU;
-    private javax.swing.JTextField jtxt_telefonoU;
+    public javax.swing.JComboBox jcmb_tipoU;
+    public javax.swing.JTextField jtxt_claveU;
+    public javax.swing.JTextField jtxt_codigoU;
+    public javax.swing.JTextField jtxt_direccionU;
+    public javax.swing.JTextField jtxt_documentoU;
+    public javax.swing.JTextField jtxt_nombreU;
+    public javax.swing.JTextField jtxt_telefonoU;
     // End of variables declaration//GEN-END:variables
 
 }

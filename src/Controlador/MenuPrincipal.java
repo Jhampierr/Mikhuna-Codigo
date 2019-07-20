@@ -79,16 +79,31 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jbtn_menu.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         jbtn_menu.setText("Menu");
+        jbtn_menu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtn_menuActionPerformed(evt);
+            }
+        });
         jMenu6.add(jbtn_menu);
 
         jMenu1.add(jMenu6);
 
         jbtn_clientes.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         jbtn_clientes.setText("                  Clientes          ");
+        jbtn_clientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtn_clientesActionPerformed(evt);
+            }
+        });
         jMenu1.add(jbtn_clientes);
 
         jbtn_mesas.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         jbtn_mesas.setText("                  Mesas          ");
+        jbtn_mesas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtn_mesasActionPerformed(evt);
+            }
+        });
         jMenu1.add(jbtn_mesas);
 
         jMenuBar1.add(jMenu1);
@@ -211,12 +226,39 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void jtbtn_cajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtbtn_cajaActionPerformed
         ListaPedido pedidos= new ListaPedido(new javax.swing.JFrame(), true);
-        if(login.var.equals("ADMINISTRADOR") && login.var.equals("COCINERO")){
+        if(login.var.equals("ADMINISTRADOR") || login.var.equals("COCINERO")){
             pedidos.setVisible(true);
         } else{
             pedidos.setVisible(false);
         }
     }//GEN-LAST:event_jtbtn_cajaActionPerformed
+
+    private void jbtn_menuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_menuActionPerformed
+        Menu menus= new Menu (new javax.swing.JFrame(), true);
+        if(login.var.equals("ADMINISTRADOR") || login.var.equals("COCINERO")){
+            menus.setVisible(true);
+        } else{
+            menus.setVisible(false);
+        }
+    }//GEN-LAST:event_jbtn_menuActionPerformed
+
+    private void jbtn_clientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_clientesActionPerformed
+        Clientes clientes = new Clientes(new javax.swing.JFrame(), true);
+        if(login.var.equals("ADMINISTRADOR")){
+            clientes.setVisible(true);
+        } else{
+            clientes.setVisible(false);
+        }
+    }//GEN-LAST:event_jbtn_clientesActionPerformed
+
+    private void jbtn_mesasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_mesasActionPerformed
+        Mesas mesas = new Mesas(new javax.swing.JFrame(), true);
+        if(login.var.equals("ADMINISTRADOR")){
+            mesas.setVisible(true);
+        } else{
+            mesas.setVisible(false);
+        }
+    }//GEN-LAST:event_jbtn_mesasActionPerformed
 
     /**
      * @param args the command line arguments

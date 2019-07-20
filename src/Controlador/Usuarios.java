@@ -20,7 +20,6 @@ public class Usuarios extends javax.swing.JDialog {
         
         jtbl_usuarios.getTableHeader().setPreferredSize(new java.awt.Dimension(0,30));
         this.refresh();
-        
     }
         
     @SuppressWarnings("unchecked")
@@ -131,12 +130,24 @@ public class Usuarios extends javax.swing.JDialog {
     }
     
     private void jbtn_crearnuevoUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_crearnuevoUActionPerformed
-        usuariosce.setVisible(true);
+       usuariosce.setVisible(true);
        this.refresh();
     }//GEN-LAST:event_jbtn_crearnuevoUActionPerformed
 
     private void jbtn_editarUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_editarUActionPerformed
+            
+            DefaultTableModel model = (DefaultTableModel) jtbl_usuarios.getModel();
+            int fila = jtbl_usuarios.getSelectedRow();
+        usuariosce.jtxt_codigoU.setText(model.getValueAt(fila, 0).toString());
+        usuariosce.jtxt_nombreU.setText(model.getValueAt(fila, 1).toString());
+            usuariosce.jtxt_claveU.setText(model.getValueAt(fila, 2).toString());
+            usuariosce.jtxt_documentoU.setText(model.getValueAt(fila, 3).toString());
+            usuariosce.jtxt_telefonoU.setText(model.getValueAt(fila, 4).toString());
+            usuariosce.jtxt_direccionU.setText(model.getValueAt(fila, 5).toString());
+        
         usuariosce.setVisible(true);
+        
+        this.refresh();
     }//GEN-LAST:event_jbtn_editarUActionPerformed
 
     private void jbtn_atrasUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_atrasUActionPerformed
