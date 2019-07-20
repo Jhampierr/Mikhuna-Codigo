@@ -1,8 +1,25 @@
 
 package Controlador;
 
-public class PedidoMesa extends javax.swing.JDialog {
+import Dao.CRUD;
+import Dao.DAOMesa;
+import Dao.DAOMozo;
+import Model.Empleado;
+import Model.Mesa;
+import java.util.List;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 
+public class PedidoMesa extends javax.swing.JDialog {
+    
+    Empleado mozo = new Empleado();
+    Mesa nMesa = new Mesa();
+    private boolean aceptado;
+
+    public boolean isAceptado() {
+        return aceptado;
+    }
+    
     public PedidoMesa(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -10,6 +27,31 @@ public class PedidoMesa extends javax.swing.JDialog {
         this.setSize(550, 250);
         this.setResizable(false);
         setLocationRelativeTo(null);
+        
+        DefaultComboBoxModel model = new DefaultComboBoxModel();
+        jComboBox1.setModel(model);
+        
+        DefaultComboBoxModel model1 = new DefaultComboBoxModel();
+        jComboBox2.setModel(model1);
+        
+        try{
+            CRUD dao2 = new DAOMesa();
+            for(Mesa a : (List<Mesa>) dao2.listar()){
+                    model.addElement(a.getCodigoM());
+            }
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+        
+        try{
+            CRUD dao = new DAOMozo();
+           
+            for(Empleado a : (List<Empleado>) dao.listar()){
+                    model1.addElement(a.getCodigoE());
+            }
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -43,27 +85,47 @@ public class PedidoMesa extends javax.swing.JDialog {
         jLabel3.setBounds(40, 110, 100, 30);
 
         jComboBox1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(jComboBox1);
         jComboBox1.setBounds(380, 110, 100, 30);
 
         jComboBox2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(jComboBox2);
         jComboBox2.setBounds(120, 110, 100, 30);
 
         jButton2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jButton2.setText("GUARDAR");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton2);
         jButton2.setBounds(240, 170, 100, 30);
 
         jButton1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jButton1.setText("CANCELAR");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton1);
         jButton1.setBounds(380, 170, 100, 30);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        mozo.setCodigoE((String) jComboBox1.getSelectedItem());
+        nMesa.setCodigoM((String) jComboBox2.getSelectedItem());
+        this.aceptado = true;
+        this.setVisible(false); 
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments

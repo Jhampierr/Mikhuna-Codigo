@@ -9,12 +9,11 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class ListaPedido extends javax.swing.JDialog {
-    
-    PedidoDetallado detalle_pedido = new PedidoDetallado(new javax.swing.JFrame(), true);
-    
+     
     public ListaPedido(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        
         this.setTitle("Mikhuna");
         this.setSize(1100, 600);
         this.setResizable(false);
@@ -30,12 +29,17 @@ public class ListaPedido extends javax.swing.JDialog {
             for(Pedido p : (List<Pedido>) dao.listar()){
                     Object[] ob = new Object[model.getColumnCount()];
                     ob[0] = p.getCodigoP();
-                    ob[1] = p.getDmesa().getCodigoM();
+                    ob[1] = p.getDmesa().getNombreM();
                     ob[2] = p.getDireccionP();
                     ob[3] = p.getMontoP();
                     ob[4] = p.getEstadoPed();
                     ob[5] = p.getFechaHoraP();
-                    ob[6] = p.getFechaHoraC();
+                    if(p.getFechaHoraP().equals(p.getFechaHoraC())){
+                        ob[6] = "";
+                    }else{                        
+                        ob[6] = p.getFechaHoraC();
+                    }
+                    
                     model.addRow(ob);
             }
             
@@ -122,7 +126,37 @@ public class ListaPedido extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
     
     private void jbtn_agregarLPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_agregarLPActionPerformed
-        detalle_pedido.setVisible(true);        
+        PedidoDetallado dialog = new PedidoDetallado(new javax.swing.JFrame(), true);
+        dialog.setTitle("Pedido y Mesa");
+        dialog.setVisible(true);
+        
+        if(dialog.isAceptado()){
+           DefaultTableModel model = (DefaultTableModel) jtbl_listaPedidoP.getModel();
+            model.setRowCount(0);
+
+            try{
+                CRUD dao = new DAOPedido();
+                for(Pedido p : (List<Pedido>) dao.listar()){
+                        Object[] ob = new Object[model.getColumnCount()];
+                        ob[0] = p.getCodigoP();
+                        ob[1] = p.getDmesa().getNombreM();
+                        ob[2] = p.getDireccionP();
+                        ob[3] = p.getMontoP();
+                        ob[4] = p.getEstadoPed();
+                        ob[5] = p.getFechaHoraP();
+                        if(p.getFechaHoraP().equals(p.getFechaHoraC())){
+                            ob[6] = "";
+                        }else{                        
+                            ob[6] = p.getFechaHoraC();
+                        }
+
+                        model.addRow(ob);
+                }
+
+            }catch(Exception e){
+                JOptionPane.showMessageDialog(null, e.getMessage()+"ERROR");
+            } 
+        }
     }//GEN-LAST:event_jbtn_agregarLPActionPerformed
 
     /**

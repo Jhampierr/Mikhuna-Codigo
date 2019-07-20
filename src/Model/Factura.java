@@ -1,26 +1,51 @@
 
 package Model;
 
-import java.time.LocalDate;
-
 public class Factura {
-    private Pedido pedido;
-    private LocalDate fechaD;
+    private String codigoF;
+    private double subtotalF;
+    private double igv;
+    private double pagoFinalF;
+    private Pedido dPedido;
     
-    public Pedido getPedido() {
-        return pedido;
+    public String getCodigoF() {
+        return codigoF;
     }
 
-    public void setPedido(Pedido pedido) {
-        this.pedido = pedido;
+    public void setCodigoF(String codigoF) {
+        this.codigoF = codigoF;
     }
 
-    public LocalDate getFechaD() {
-        return fechaD;
+    public double getSubtotalF() {
+        return subtotalF;
     }
 
-    public void setFechaD(LocalDate fechaD) {
-        this.fechaD = fechaD;
+    public void setSubtotalF(double subtotalF) {
+        this.subtotalF = subtotalF;
+    }
+
+    public double getIgv() {
+        return igv;
+    }
+
+    public void setIgv(double igv) {
+        this.igv = igv;
+    }
+
+    public double getPagoFinalF() {
+        return pagoFinalF;
+    }
+
+    public void setPagoFinalF(double pagoFinalF) {
+        this.pagoFinalF = pagoFinalF;
+    }
+
+    public Pedido getdPedido() {
+        return dPedido;
+    }
+
+    public void setdPedido(Pedido dPedido) {
+        this.dPedido = dPedido;
     }
     
 }

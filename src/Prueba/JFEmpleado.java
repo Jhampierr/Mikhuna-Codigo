@@ -5,6 +5,7 @@ import Dao.CRUD;
 import Dao.DAOEmpleado;
 import Dao.DAOAlimento;
 import Dao.DAOCliente;
+import Dao.DAODetallePedido;
 import Dao.DAOPedido;
 import Dao.DAOValidar;
 import Dao.validar;
@@ -101,6 +102,7 @@ public class JFEmpleado extends javax.swing.JFrame {
         jBListar4 = new javax.swing.JButton();
         jTbuscarcod1 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -271,6 +273,11 @@ public class JFEmpleado extends javax.swing.JFrame {
 
         jLabel14.setText("tipo A:");
 
+        jTBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTBuscarActionPerformed(evt);
+            }
+        });
         jTBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jTBuscarKeyPressed(evt);
@@ -556,6 +563,13 @@ public class JFEmpleado extends javax.swing.JFrame {
             }
         });
 
+        jButton2.setText("jButton2");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -567,6 +581,8 @@ public class JFEmpleado extends javax.swing.JFrame {
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(72, 72, 72)
                         .addComponent(jButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton2)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -593,7 +609,9 @@ public class JFEmpleado extends javax.swing.JFrame {
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(26, 26, 26)
-                        .addComponent(jButton1)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton1)
+                            .addComponent(jButton2))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -833,7 +851,7 @@ public class JFEmpleado extends javax.swing.JFrame {
             CRUD dao = new DAOPedido();
             
             for(DetallePedido p : (List<DetallePedido>) dao.listar()){
-                usr = usr + p.getCodigoP()+", "+ p.getDmesa().getCodigoM()+", "+ p.getDireccionP()+", "+ p.getEstadoPed()+"\n";
+                
             }
             JOptionPane.showMessageDialog(null, usr+"NO HAY NADA");
             
@@ -841,6 +859,29 @@ public class JFEmpleado extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, e.getMessage()+"ERROR");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        String usr="";
+        try{
+            CRUD dao = new DAODetallePedido();
+            
+            for(DetallePedido p : (List<DetallePedido>) dao.listar()){
+                usr = usr + p.getCodigoDetPedido()+", " 
+                        + p.getCantAlimento()+", "
+                        + p.getTotal()+", "
+                        + p.getDpedido().getCodigoP()+", "
+                        + p.getDalimentos().getCodigoA()+"\n";
+            }
+            JOptionPane.showMessageDialog(null, usr+"NO HAY NADA");
+            
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e.getMessage()+"ERROR");
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jTBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTBuscarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTBuscarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -896,6 +937,7 @@ public class JFEmpleado extends javax.swing.JFrame {
     private javax.swing.JButton jBListar4;
     private javax.swing.JButton jBlogin;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

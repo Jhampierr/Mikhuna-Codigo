@@ -1,12 +1,21 @@
 
 package Model;
 
-public class DetallePedido extends Pedido{
+public class DetallePedido{
+    private int codigoDetPedido;
     private double total;
     private int cantAlimento;
     private Alimento dalimentos;
     private Pedido dpedido;
+    
+    public int getCodigoDetPedido() {
+        return codigoDetPedido;
+    }
 
+    public void setCodigoDetPedido(int codigoDetPedido) {
+        this.codigoDetPedido = codigoDetPedido;
+    }
+    
     public Pedido getDpedido() {
         return dpedido;
     }
