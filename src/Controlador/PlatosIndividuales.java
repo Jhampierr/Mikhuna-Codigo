@@ -1,4 +1,3 @@
-
 package Controlador;
 
 import Model.TipoAlimento;
@@ -10,9 +9,10 @@ public class PlatosIndividuales extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         this.setTitle("Mikhuna");
-        this.setSize(800, 500);
+        this.setSize(800, 600);
         this.setResizable(false);
         setLocationRelativeTo(null);
+        loadComboBox();
     }
 
     /**
@@ -41,11 +41,11 @@ public class PlatosIndividuales extends javax.swing.JDialog {
 
         jTextField1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         getContentPane().add(jTextField1);
-        jTextField1.setBounds(60, 120, 235, 30);
+        jTextField1.setBounds(60, 160, 235, 30);
 
         jcmb_tipoPI.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         getContentPane().add(jcmb_tipoPI);
-        jcmb_tipoPI.setBounds(540, 120, 130, 30);
+        jcmb_tipoPI.setBounds(540, 160, 130, 30);
 
         jtbl_buscarPI.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -58,9 +58,9 @@ public class PlatosIndividuales extends javax.swing.JDialog {
         jScrollPane1.setViewportView(jtbl_buscarPI);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(50, 180, 710, 280);
+        jScrollPane1.setBounds(50, 230, 700, 320);
 
-        jbtn_atrasPI.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jbtn_atrasPI.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jbtn_atrasPI.setText("<<");
         jbtn_atrasPI.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -68,47 +68,47 @@ public class PlatosIndividuales extends javax.swing.JDialog {
             }
         });
         getContentPane().add(jbtn_atrasPI);
-        jbtn_atrasPI.setBounds(10, 10, 60, 40);
+        jbtn_atrasPI.setBounds(50, 40, 60, 40);
 
-        jbtn_crearnuevoPI.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-        jbtn_crearnuevoPI.setText("<html> <body> <div style= \"text-align: center; color: black;\"> <p>Crear</p> <p>Nuevo</p> </div> </body> </html> ");
+        jbtn_crearnuevoPI.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jbtn_crearnuevoPI.setText("<html> <body> <div style= \"text-align: center; color: black;\"> <p>CREAR</p> <p>NUEVO</p> </div> </body> </html> ");
         jbtn_crearnuevoPI.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbtn_crearnuevoPIActionPerformed(evt);
             }
         });
         getContentPane().add(jbtn_crearnuevoPI);
-        jbtn_crearnuevoPI.setBounds(70, 10, 100, 40);
+        jbtn_crearnuevoPI.setBounds(120, 40, 100, 40);
 
-        jbtn_editarPI.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-        jbtn_editarPI.setText("Editar");
+        jbtn_editarPI.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jbtn_editarPI.setText("EDITAR");
         jbtn_editarPI.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbtn_editarPIActionPerformed(evt);
             }
         });
         getContentPane().add(jbtn_editarPI);
-        jbtn_editarPI.setBounds(170, 10, 70, 40);
+        jbtn_editarPI.setBounds(230, 40, 80, 40);
 
-        jbtn_eliminarPI.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-        jbtn_eliminarPI.setText("Eliminar");
+        jbtn_eliminarPI.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jbtn_eliminarPI.setText("ELIMINAR");
         getContentPane().add(jbtn_eliminarPI);
-        jbtn_eliminarPI.setBounds(240, 10, 80, 40);
+        jbtn_eliminarPI.setBounds(320, 40, 85, 40);
 
-        jbtn_exportarPI.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-        jbtn_exportarPI.setText("Exportar");
+        jbtn_exportarPI.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jbtn_exportarPI.setText("EXPORTAR");
         getContentPane().add(jbtn_exportarPI);
-        jbtn_exportarPI.setBounds(320, 10, 80, 40);
+        jbtn_exportarPI.setBounds(420, 40, 93, 40);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setText("LISTA DE ALIMENTOS");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(340, 80, 140, 17);
+        jLabel2.setBounds(340, 110, 140, 17);
 
         jbtn_buscarPI.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jbtn_buscarPI.setText("BUSCAR");
         getContentPane().add(jbtn_buscarPI);
-        jbtn_buscarPI.setBounds(320, 120, 80, 30);
+        jbtn_buscarPI.setBounds(320, 160, 80, 30);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
