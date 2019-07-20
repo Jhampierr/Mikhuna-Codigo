@@ -1,15 +1,61 @@
 
 package Controlador;
 
-public class PedidoDetallado extends javax.swing.JDialog {
+import Dao.CRUD;
+import Dao.DAOAlimento;
+import Dao.DAOPedido;
+import Model.Alimento;
+import Model.Pedido;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
+public class PedidoDetallado extends javax.swing.JDialog {
+    
     public PedidoDetallado(java.awt.Frame parent, boolean modal) {
+        
         super(parent, modal);
         initComponents();
         this.setTitle("Mikhuna");
         this.setSize(1000, 600);
         this.setResizable(false);
         setLocationRelativeTo(null);
+        
+        int contar = 1;
+        String codigo = "";
+        try{
+            CRUD dao = new DAOPedido();
+            for(Pedido p : (List<Pedido>) dao.listar()){      
+                    codigo = p.getCodigoP();
+                    contar++;
+            }
+            if(contar<10){
+                codigo = "P00" + String.valueOf(contar);
+            }else if(contar<100){
+                codigo = "P0" + String.valueOf(contar);
+            }else if(contar<1000){
+                codigo = "P" + String.valueOf(contar);
+            }
+            jLCodPEdido.setText(codigo);
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e.getMessage()+"ERROR");
+        }
+        
+        DefaultTableModel model = (DefaultTableModel) jtbl_productoPD.getModel();
+        
+        try{
+            CRUD dao = new DAOAlimento();
+            for(Alimento p : (List<Alimento>) dao.listar()){
+                    Object[] ob = new Object[model.getColumnCount()];
+                    ob[0] = p.getNombreA();
+                    ob[1] = p.getPrecio();
+                    model.addRow(ob);
+            }
+            
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e.getMessage()+"ERROR");
+        }
+ 
     }
 
     @SuppressWarnings("unchecked")
@@ -20,7 +66,7 @@ public class PedidoDetallado extends javax.swing.JDialog {
         jbtn_buscarPD = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jtbl_productoPD = new javax.swing.JTable();
-        jTextField3 = new javax.swing.JTextField();
+        jTBuscarProducto = new javax.swing.JTextField();
         jbtn_agregarPD = new javax.swing.JButton();
         jbtn_agregarMenuPD = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
@@ -28,9 +74,9 @@ public class PedidoDetallado extends javax.swing.JDialog {
         jbtn_quitarPD = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         jtbl_pedidosPD = new javax.swing.JTable();
-        jTextField5 = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jTextField6 = new javax.swing.JTextField();
+        jLCodPEdido = new javax.swing.JLabel();
         jbtn_mesaPD = new javax.swing.JButton();
         jbtn_deliveryPD = new javax.swing.JButton();
         jTextField7 = new javax.swing.JTextField();
@@ -45,6 +91,11 @@ public class PedidoDetallado extends javax.swing.JDialog {
 
         jbtn_buscarPD.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jbtn_buscarPD.setText("BUSCAR");
+        jbtn_buscarPD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtn_buscarPDActionPerformed(evt);
+            }
+        });
         jPanel5.add(jbtn_buscarPD);
         jbtn_buscarPD.setBounds(290, 40, 90, 30);
 
@@ -56,7 +107,15 @@ public class PedidoDetallado extends javax.swing.JDialog {
             new String [] {
                 "NOMBRE", "PRECIO"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jtbl_productoPD.getTableHeader().setResizingAllowed(false);
         jtbl_productoPD.getTableHeader().setReorderingAllowed(false);
         jScrollPane2.setViewportView(jtbl_productoPD);
@@ -64,12 +123,17 @@ public class PedidoDetallado extends javax.swing.JDialog {
         jPanel5.add(jScrollPane2);
         jScrollPane2.setBounds(40, 90, 370, 250);
 
-        jTextField3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jPanel5.add(jTextField3);
-        jTextField3.setBounds(50, 40, 200, 30);
+        jTBuscarProducto.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jPanel5.add(jTBuscarProducto);
+        jTBuscarProducto.setBounds(50, 40, 200, 30);
 
         jbtn_agregarPD.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jbtn_agregarPD.setText("AGREGAR");
+        jbtn_agregarPD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtn_agregarPDActionPerformed(evt);
+            }
+        });
         jPanel5.add(jbtn_agregarPD);
         jbtn_agregarPD.setBounds(310, 360, 90, 30);
 
@@ -85,7 +149,7 @@ public class PedidoDetallado extends javax.swing.JDialog {
         jPanel6.setLayout(null);
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel7.setText("CODIGO PEDIDO");
+        jLabel7.setText("CODIGO PEDIDO:");
         jPanel6.add(jLabel7);
         jLabel7.setBounds(100, 40, 100, 20);
 
@@ -102,17 +166,21 @@ public class PedidoDetallado extends javax.swing.JDialog {
             new String [] {
                 "NOMBRE", "PRECIO", "CANTIDAD"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jtbl_pedidosPD.getTableHeader().setResizingAllowed(false);
         jtbl_pedidosPD.getTableHeader().setReorderingAllowed(false);
         jScrollPane3.setViewportView(jtbl_pedidosPD);
 
         jPanel6.add(jScrollPane3);
         jScrollPane3.setBounds(40, 90, 400, 250);
-
-        jTextField5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jPanel6.add(jTextField5);
-        jTextField5.setBounds(250, 40, 120, 30);
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel8.setText("TOTAL");
@@ -122,6 +190,10 @@ public class PedidoDetallado extends javax.swing.JDialog {
         jTextField6.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jPanel6.add(jTextField6);
         jTextField6.setBounds(320, 360, 110, 30);
+
+        jLCodPEdido.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel6.add(jLCodPEdido);
+        jLCodPEdido.setBounds(200, 40, 150, 30);
 
         getContentPane().add(jPanel6);
         jPanel6.setBounds(20, 40, 480, 410);
@@ -152,6 +224,51 @@ public class PedidoDetallado extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jbtn_buscarPDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_buscarPDActionPerformed
+        DefaultTableModel model = (DefaultTableModel) jtbl_productoPD.getModel();
+        
+        try {
+            int filas=model.getRowCount();
+            for (int i = 0;filas>i; i++) {
+                model.removeRow(0);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al limpiar la tabla.");
+        }
+        
+        try{
+            CRUD dao2 = new DAOAlimento();
+            
+            for(Alimento a : (List<Alimento>) dao2.buscarpor(jTBuscarProducto.getText())){
+                    Object[] ob = new Object[model.getColumnCount()];
+                    ob[0] = a.getNombreA();
+                    ob[1] = a.getPrecio();
+                    model.addRow(ob);
+            }
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+    }//GEN-LAST:event_jbtn_buscarPDActionPerformed
+
+    private void jbtn_agregarPDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_agregarPDActionPerformed
+        DefaultTableModel model = (DefaultTableModel) jtbl_productoPD.getModel();
+        
+        JOptionPane.showMessageDialog(null, "Primero Agrega a la Otra tabla");
+        
+        try{
+            CRUD dao = new DAOAlimento();
+            for(Alimento p : (List<Alimento>) dao.listar()){
+                    Object[] ob = new Object[model.getColumnCount()];
+                    ob[0] = p.getNombreA();
+                    ob[1] = p.getPrecio();
+                    model.addRow(ob);
+            }
+            
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e.getMessage()+"ERROR");
+        }
+    }//GEN-LAST:event_jbtn_agregarPDActionPerformed
 
     /**
      * @param args the command line arguments
@@ -196,14 +313,14 @@ public class PedidoDetallado extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLCodPEdido;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField jTBuscarProducto;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
     private javax.swing.JButton jbtn_agregarMenuPD;

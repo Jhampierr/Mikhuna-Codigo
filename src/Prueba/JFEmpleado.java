@@ -5,10 +5,12 @@ import Dao.CRUD;
 import Dao.DAOEmpleado;
 import Dao.DAOAlimento;
 import Dao.DAOCliente;
+import Dao.DAOPedido;
 import Dao.DAOValidar;
 import Dao.validar;
 import Model.Alimento;
 import Model.Cliente;
+import Model.DetallePedido;
 import Model.Empleado;
 import Model.TipoAlimento;
 import Model.TipoEmpleado;
@@ -98,6 +100,7 @@ public class JFEmpleado extends javax.swing.JFrame {
         jLabel19 = new javax.swing.JLabel();
         jBListar4 = new javax.swing.JButton();
         jTbuscarcod1 = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -546,6 +549,13 @@ public class JFEmpleado extends javax.swing.JFrame {
                     .addComponent(jBListar4)))
         );
 
+        jButton1.setText("LISTAR PEDIDO");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -553,7 +563,11 @@ public class JFEmpleado extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(72, 72, 72)
+                        .addComponent(jButton1)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -573,8 +587,13 @@ public class JFEmpleado extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(18, 18, 18)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addComponent(jButton1)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -808,6 +827,21 @@ public class JFEmpleado extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jBListar4ActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        String usr="";
+        try{
+            CRUD dao = new DAOPedido();
+            
+            for(DetallePedido p : (List<DetallePedido>) dao.listar()){
+                usr = usr + p.getCodigoP()+", "+ p.getDmesa().getCodigoM()+", "+ p.getDireccionP()+", "+ p.getEstadoPed()+"\n";
+            }
+            JOptionPane.showMessageDialog(null, usr+"NO HAY NADA");
+            
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e.getMessage()+"ERROR");
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -861,6 +895,7 @@ public class JFEmpleado extends javax.swing.JFrame {
     private javax.swing.JButton jBListar3;
     private javax.swing.JButton jBListar4;
     private javax.swing.JButton jBlogin;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
