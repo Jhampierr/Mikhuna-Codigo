@@ -5,19 +5,26 @@
  */
 package Controlador;
 
+import Dao.DAOEmpleado;
+import Model.Empleado;
 import Model.TipoEmpleado;
+import java.time.LocalDate;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author Alonso
- */
 public class PersonalCE extends javax.swing.JDialog {
+
+    public String operacion;
 
     /**
      * Creates new form EditarPersonal
      */
+
     public PersonalCE(java.awt.Frame parent, boolean modal) {
+
         super(parent, modal);
         initComponents();
         this.setTitle("Mikhuna");
@@ -122,7 +129,37 @@ public class PersonalCE extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbtn_confirmarPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_confirmarPActionPerformed
+
+        Empleado emp = new Empleado();
+        emp.setCodigoE(jtxt_codigoP.getText());
+        emp.setNombreP(jtxt_nombreP.getText());
+        emp.setDocumento(jtxt_documentoP.getText());
+        emp.setTelefono(jtxt_telefonoP.getText());
+        emp.setDireccion(jtxt_direccionP.getText());
+        emp.setTipoEmp(TipoEmpleado.MOZO);
+        DAOEmpleado nemp = new DAOEmpleado();
+        if (operacion.equals("crear")) {
+            
+            try {
+                nemp.registrar(emp);
+                JOptionPane.showMessageDialog(null, "Registro exitoso");
+                
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null, "Registro Incompleto");
+            }
+        }
+
+        if (operacion.equals("editar")) {
+           try {
+                nemp.modificar(emp);
+                JOptionPane.showMessageDialog(null, "Edicion exitoso");
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null, "Edicion Incompleta");
+            }
+        }
         this.setVisible(false);
+       
+
     }//GEN-LAST:event_jbtn_confirmarPActionPerformed
 
     private void jbtn_cancelarPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_cancelarPActionPerformed
@@ -180,11 +217,11 @@ public class PersonalCE extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JButton jbtn_cancelarP;
     private javax.swing.JButton jbtn_confirmarP;
-    private javax.swing.JTextField jtxt_codigoP;
-    private javax.swing.JTextField jtxt_direccionP;
-    private javax.swing.JTextField jtxt_documentoP;
-    private javax.swing.JTextField jtxt_nombreP;
-    private javax.swing.JTextField jtxt_telefonoP;
+    public javax.swing.JTextField jtxt_codigoP;
+    public javax.swing.JTextField jtxt_direccionP;
+    public javax.swing.JTextField jtxt_documentoP;
+    public javax.swing.JTextField jtxt_nombreP;
+    public javax.swing.JTextField jtxt_telefonoP;
     // End of variables declaration//GEN-END:variables
 
 }
