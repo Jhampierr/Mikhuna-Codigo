@@ -7,20 +7,24 @@ import Controlador.Usuarios;
 import Dao.CRUD;
 import Dao.DAOEmpleado;
 import Model.Empleado;
-import Model.TipoAlimento;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 
 public class UsuariosCE extends javax.swing.JDialog {
-    
+    Empleado emp= new Empleado();
+    private List<Empleado> listaEmpleado = new ArrayList<>();
     public UsuariosCE(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         this.setTitle("Mikhuna");
-        this.setSize(550, 585);
+        this.setSize(550, 500);
         this.setResizable(false);
         setLocationRelativeTo(null);
-        loadComboBox();
+        
+        DefaultComboBoxModel model = new DefaultComboBoxModel(TipoEmpleado.values());
+        jcmb_tipoU.setModel(model);
     }
 
     @SuppressWarnings("unchecked")
@@ -42,7 +46,7 @@ public class UsuariosCE extends javax.swing.JDialog {
         jtxt_telefonoU = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jtxt_direccionU = new javax.swing.JTextField();
-        jcmb_tipoU = new javax.swing.JComboBox<>();
+        jcmb_tipoU = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -50,25 +54,25 @@ public class UsuariosCE extends javax.swing.JDialog {
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel1.setText("CODIGO");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(50, 50, 60, 15);
+        jLabel1.setBounds(60, 50, 60, 15);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel2.setText("NOMBRE");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(50, 100, 50, 15);
+        jLabel2.setBounds(60, 100, 50, 15);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel3.setText("TIPO");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(50, 360, 40, 15);
+        jLabel3.setBounds(60, 360, 40, 15);
 
         jtxt_codigoU.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         getContentPane().add(jtxt_codigoU);
-        jtxt_codigoU.setBounds(160, 40, 340, 30);
+        jtxt_codigoU.setBounds(170, 40, 340, 30);
 
         jtxt_nombreU.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         getContentPane().add(jtxt_nombreU);
-        jtxt_nombreU.setBounds(160, 90, 340, 30);
+        jtxt_nombreU.setBounds(170, 90, 340, 30);
 
         jbtn_confirmarU.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jbtn_confirmarU.setText("CONFIRMAR");
@@ -79,7 +83,7 @@ public class UsuariosCE extends javax.swing.JDialog {
             }
         });
         getContentPane().add(jbtn_confirmarU);
-        jbtn_confirmarU.setBounds(150, 480, 100, 40);
+        jbtn_confirmarU.setBounds(160, 410, 100, 40);
 
         jbtn_cancelarU.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jbtn_cancelarU.setText("CANCELAR");
@@ -90,89 +94,69 @@ public class UsuariosCE extends javax.swing.JDialog {
             }
         });
         getContentPane().add(jbtn_cancelarU);
-        jbtn_cancelarU.setBounds(300, 480, 100, 40);
+        jbtn_cancelarU.setBounds(310, 410, 100, 40);
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel4.setText("CONTRASEÑA");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(50, 150, 90, 15);
+        jLabel4.setBounds(60, 150, 90, 15);
 
         jtxt_claveU.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         getContentPane().add(jtxt_claveU);
-        jtxt_claveU.setBounds(160, 140, 340, 30);
+        jtxt_claveU.setBounds(170, 140, 340, 30);
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel5.setText("DOCUMENTO");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(50, 200, 90, 15);
+        jLabel5.setBounds(60, 200, 90, 15);
 
         jtxt_documentoU.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         getContentPane().add(jtxt_documentoU);
-        jtxt_documentoU.setBounds(160, 190, 340, 30);
+        jtxt_documentoU.setBounds(170, 190, 340, 30);
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel6.setText("TELEFONO");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(50, 250, 90, 15);
+        jLabel6.setBounds(60, 250, 90, 15);
 
         jtxt_telefonoU.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         getContentPane().add(jtxt_telefonoU);
-        jtxt_telefonoU.setBounds(160, 240, 340, 30);
+        jtxt_telefonoU.setBounds(170, 240, 340, 30);
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel7.setText("DIRECCION");
         getContentPane().add(jLabel7);
-        jLabel7.setBounds(50, 300, 80, 15);
+        jLabel7.setBounds(60, 300, 80, 15);
 
         jtxt_direccionU.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         getContentPane().add(jtxt_direccionU);
-        jtxt_direccionU.setBounds(160, 290, 340, 30);
+        jtxt_direccionU.setBounds(170, 290, 340, 30);
 
         jcmb_tipoU.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         getContentPane().add(jcmb_tipoU);
-        jcmb_tipoU.setBounds(160, 350, 140, 30);
+        jcmb_tipoU.setBounds(170, 350, 140, 30);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    String codigo, nombre, clave, documento, telefono, direccion, tipo;
     private void jbtn_confirmarUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_confirmarUActionPerformed
-        Usuarios usu= new Usuarios(new javax.swing.JFrame(), true);
-        //Empleado emp= new Empleado();
         
-         codigo= jtxt_codigoU.getText();
-         //emp.setCodigoE(codigo);
-         
-         nombre= jtxt_nombreU.getText();
-         //emp.setNombreP(nombre);
-         
-         clave=jtxt_claveU.getText();
-         //emp.setClave(clave);
-         
-         documento= jtxt_documentoU.getText();
-         //emp.setDocumento(documento);
-         
-         telefono= jtxt_telefonoU.getText();
-         //emp.setTelefono(telefono);
-         
-         direccion= jtxt_direccionU.getText();
-         //emp.setDireccion(direccion);
-         
-         tipo = (String) jcmb_tipoU.getSelectedItem();
-         //emp.setTipoEmp(TipoEmpleado.valueOf(tipo));
-         
-         DefaultTableModel model = (DefaultTableModel) usu.jtbl_usuarios.getModel();
-         model.addRow(new Object[]{codigo, nombre, clave, documento, telefono, direccion, tipo});
-         //model.addRow(new Object[]{emp});
-         //model.addRow(new Object[]{emp.getCodigoE(), emp.getNombreP(), emp.getClave(), emp.getDocumento(), emp.getTelefono(), emp.getDireccion(), emp.getTipoEmp()});
-         
-       /* try{
+        emp.setCodigoE(jtxt_codigoU.getText());
+        emp.setNombreP(jtxt_nombreU.getText());
+        emp.setDocumento(jtxt_documentoU.getText());
+        emp.setTelefono(jtxt_telefonoU.getText());
+        emp.setDireccion(jtxt_direccionU.getText());
+        emp.setClave(jtxt_claveU.getText());
+        emp.setTipoEmp( (TipoEmpleado) jcmb_tipoU.getSelectedItem());
+        try{
             CRUD dao = new DAOEmpleado();
             dao.registrar(emp);
+            this.setVisible(false);
+             
         }catch(Exception e){
-            JOptionPane.showMessageDialog(null, e.getMessage());
-        }*/
-        this.setVisible(false);
+            JOptionPane.showMessageDialog(null, "Error al confirmar usuario: "+e);
+        }
+        
     }//GEN-LAST:event_jbtn_confirmarUActionPerformed
     
     private void jbtn_cancelarUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_cancelarUActionPerformed
@@ -234,7 +218,7 @@ public class UsuariosCE extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JButton jbtn_cancelarU;
     private javax.swing.JButton jbtn_confirmarU;
-    private javax.swing.JComboBox<TipoEmpleado> jcmb_tipoU;
+    private javax.swing.JComboBox jcmb_tipoU;
     private javax.swing.JTextField jtxt_claveU;
     private javax.swing.JTextField jtxt_codigoU;
     private javax.swing.JTextField jtxt_direccionU;
@@ -242,9 +226,5 @@ public class UsuariosCE extends javax.swing.JDialog {
     private javax.swing.JTextField jtxt_nombreU;
     private javax.swing.JTextField jtxt_telefonoU;
     // End of variables declaration//GEN-END:variables
-
-    private void loadComboBox() {
-        jcmb_tipoU.setModel(new DefaultComboBoxModel<>(TipoEmpleado.values()));
-    }
 
 }

@@ -54,20 +54,20 @@ public class PersonalCE extends javax.swing.JDialog {
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel1.setText("CODIGO");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(40, 80, 60, 20);
+        jLabel1.setBounds(60, 50, 60, 15);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel2.setText("NOMBRE");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(40, 140, 50, 20);
+        jLabel2.setBounds(60, 100, 50, 15);
 
         jtxt_codigoP.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         getContentPane().add(jtxt_codigoP);
-        jtxt_codigoP.setBounds(150, 70, 340, 30);
+        jtxt_codigoP.setBounds(170, 40, 340, 30);
 
         jtxt_nombreP.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         getContentPane().add(jtxt_nombreP);
-        jtxt_nombreP.setBounds(150, 130, 340, 30);
+        jtxt_nombreP.setBounds(170, 90, 340, 30);
 
         jbtn_confirmarP.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jbtn_confirmarP.setText("CONFIRMAR");
@@ -78,7 +78,7 @@ public class PersonalCE extends javax.swing.JDialog {
             }
         });
         getContentPane().add(jbtn_confirmarP);
-        jbtn_confirmarP.setBounds(130, 400, 100, 40);
+        jbtn_confirmarP.setBounds(160, 410, 100, 40);
 
         jbtn_cancelarP.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jbtn_cancelarP.setText("CANCELAR");
@@ -89,34 +89,34 @@ public class PersonalCE extends javax.swing.JDialog {
             }
         });
         getContentPane().add(jbtn_cancelarP);
-        jbtn_cancelarP.setBounds(300, 400, 100, 40);
+        jbtn_cancelarP.setBounds(310, 410, 100, 40);
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel5.setText("DOCUMENTO");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(40, 200, 90, 15);
+        jLabel5.setBounds(60, 150, 90, 15);
 
         jtxt_documentoP.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         getContentPane().add(jtxt_documentoP);
-        jtxt_documentoP.setBounds(150, 190, 340, 30);
+        jtxt_documentoP.setBounds(170, 140, 340, 30);
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel6.setText("TELEFONO");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(40, 260, 90, 15);
+        jLabel6.setBounds(60, 200, 90, 15);
 
         jtxt_telefonoP.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         getContentPane().add(jtxt_telefonoP);
-        jtxt_telefonoP.setBounds(150, 250, 340, 30);
+        jtxt_telefonoP.setBounds(170, 190, 340, 30);
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel7.setText("DIRECCION");
         getContentPane().add(jLabel7);
-        jLabel7.setBounds(40, 320, 80, 15);
+        jLabel7.setBounds(60, 250, 80, 15);
 
         jtxt_direccionP.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         getContentPane().add(jtxt_direccionP);
-        jtxt_direccionP.setBounds(150, 310, 340, 30);
+        jtxt_direccionP.setBounds(170, 240, 340, 30);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

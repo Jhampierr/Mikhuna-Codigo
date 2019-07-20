@@ -1,6 +1,10 @@
 
 package Controlador;
 
+import Dao.DAOEmpleado;
+import Model.Empleado;
+import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class Usuarios extends javax.swing.JDialog {
@@ -15,8 +19,10 @@ public class Usuarios extends javax.swing.JDialog {
         setLocationRelativeTo(null);
         
         jtbl_usuarios.getTableHeader().setPreferredSize(new java.awt.Dimension(0,30));
+        this.refresh();
+        
     }
-
+        
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -36,7 +42,7 @@ public class Usuarios extends javax.swing.JDialog {
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel1.setText("LISTA DE USUARIOS");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(410, 110, 140, 17);
+        jLabel1.setBounds(400, 90, 140, 17);
 
         jtbl_usuarios.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jtbl_usuarios.setModel(new javax.swing.table.DefaultTableModel(
@@ -54,9 +60,9 @@ public class Usuarios extends javax.swing.JDialog {
         jScrollPane1.setViewportView(jtbl_usuarios);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(50, 150, 850, 340);
+        jScrollPane1.setBounds(30, 130, 890, 330);
 
-        jbtn_atrasU.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jbtn_atrasU.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jbtn_atrasU.setText("<<");
         jbtn_atrasU.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -64,47 +70,69 @@ public class Usuarios extends javax.swing.JDialog {
             }
         });
         getContentPane().add(jbtn_atrasU);
-        jbtn_atrasU.setBounds(50, 40, 60, 40);
+        jbtn_atrasU.setBounds(10, 10, 60, 40);
 
-        jbtn_crearnuevoU.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jbtn_crearnuevoU.setText("<html> <body> <div style= \"text-align: center; color: black;\"> <p>CREAR</p> <p>NUEVO</p> </div> </body> </html> ");
+        jbtn_crearnuevoU.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        jbtn_crearnuevoU.setText("<html> <body> <div style= \"text-align: center; color: black;\"> <p>Crear</p> <p>Nuevo</p> </div> </body> </html> ");
         jbtn_crearnuevoU.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbtn_crearnuevoUActionPerformed(evt);
             }
         });
         getContentPane().add(jbtn_crearnuevoU);
-        jbtn_crearnuevoU.setBounds(120, 40, 96, 40);
+        jbtn_crearnuevoU.setBounds(70, 10, 100, 40);
 
-        jbtn_editarU.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jbtn_editarU.setText("EDITAR");
+        jbtn_editarU.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        jbtn_editarU.setText("Editar");
         jbtn_editarU.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbtn_editarUActionPerformed(evt);
             }
         });
         getContentPane().add(jbtn_editarU);
-        jbtn_editarU.setBounds(230, 40, 75, 40);
+        jbtn_editarU.setBounds(170, 10, 70, 40);
 
-        jbtn_eliminarU.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jbtn_eliminarU.setText("ELIMINAR");
+        jbtn_eliminarU.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        jbtn_eliminarU.setText("Eliminar");
         getContentPane().add(jbtn_eliminarU);
-        jbtn_eliminarU.setBounds(320, 40, 90, 40);
+        jbtn_eliminarU.setBounds(240, 10, 80, 40);
 
-        jbtn_exportarU.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jbtn_exportarU.setText("EXPORTAR");
+        jbtn_exportarU.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        jbtn_exportarU.setText("Exportar");
         getContentPane().add(jbtn_exportarU);
-        jbtn_exportarU.setBounds(420, 40, 100, 40);
+        jbtn_exportarU.setBounds(320, 10, 80, 40);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public void refresh() {
+        DefaultTableModel model = (DefaultTableModel) jtbl_usuarios.getModel();
+        model.setRowCount(0);
+
+        try {
+            DAOEmpleado tblemp = new DAOEmpleado();
+
+            for (Empleado em : (List<Empleado>) tblemp.listar()) {
+                Object[] ob = new Object[model.getColumnCount()];
+                ob[0] = em.getCodigoE();
+                ob[1] = em.getNombreP();
+                ob[2] = em.getClave();
+                ob[3] = em.getDocumento();
+                ob[4] = em.getTelefono();
+                ob[5] = em.getDireccion();
+                ob[6] = em.getTipoEmp();
+                ob[7] = em.getFechaValidacion();
+                model.addRow(ob);
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "error Refesh");
+        }
+    }
+    
     private void jbtn_crearnuevoUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_crearnuevoUActionPerformed
         usuariosce.setVisible(true);
-       //DefaultTableModel model = (DefaultTableModel) jtbl_usuarios.getModel();
-       //model.addRow(new Object[]{usuariosce.codigo, usuariosce.nombre, usuariosce.clave, 
-       //usuariosce.documento, usuariosce.telefono, usuariosce.direccion, usuariosce.tipo});
-        
+       this.refresh();
     }//GEN-LAST:event_jbtn_crearnuevoUActionPerformed
 
     private void jbtn_editarUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_editarUActionPerformed

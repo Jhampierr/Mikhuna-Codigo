@@ -8,7 +8,7 @@ public class Personal extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         this.setTitle("Mikhuna");
-        this.setSize(950, 550);
+        this.setSize(950, 500);
         this.setResizable(false);
         setLocationRelativeTo(null);
         jtbl_personalP.getTableHeader().setPreferredSize(new java.awt.Dimension(0,30));
@@ -44,14 +44,14 @@ public class Personal extends javax.swing.JDialog {
         jScrollPane1.setViewportView(jtbl_personalP);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(50, 160, 850, 340);
+        jScrollPane1.setBounds(30, 130, 890, 330);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel1.setText("LISTA DE PERSONAL");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(390, 110, 140, 17);
+        jLabel1.setBounds(410, 90, 140, 17);
 
-        jbtn_atrasP.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jbtn_atrasP.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jbtn_atrasP.setText("<<");
         jbtn_atrasP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -59,42 +59,37 @@ public class Personal extends javax.swing.JDialog {
             }
         });
         getContentPane().add(jbtn_atrasP);
-        jbtn_atrasP.setBounds(50, 40, 60, 40);
+        jbtn_atrasP.setBounds(10, 10, 60, 40);
 
-        jbtn_crearnuevoP.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jbtn_crearnuevoP.setText("<html> <body> <div style= \"text-align: center; color: black;\"> <p>CREAR</p> <p>NUEVO</p> </div> </body> </html> ");
+        jbtn_crearnuevoP.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        jbtn_crearnuevoP.setText("<html> <body> <div style= \"text-align: center; color: black;\"> <p>Crear</p> <p>Nuevo</p> </div> </body> </html> ");
         jbtn_crearnuevoP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbtn_crearnuevoPActionPerformed(evt);
             }
         });
         getContentPane().add(jbtn_crearnuevoP);
-        jbtn_crearnuevoP.setBounds(120, 40, 100, 40);
+        jbtn_crearnuevoP.setBounds(70, 10, 100, 40);
 
-        jbtn_editarP.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jbtn_editarP.setText("EDITAR");
+        jbtn_editarP.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        jbtn_editarP.setText("Editar");
         jbtn_editarP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbtn_editarPActionPerformed(evt);
             }
         });
         getContentPane().add(jbtn_editarP);
-        jbtn_editarP.setBounds(230, 40, 80, 40);
+        jbtn_editarP.setBounds(170, 10, 70, 40);
 
-        jbtn_eliminarP.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jbtn_eliminarP.setText("ELIMINAR");
+        jbtn_eliminarP.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        jbtn_eliminarP.setText("Eliminar");
         getContentPane().add(jbtn_eliminarP);
-        jbtn_eliminarP.setBounds(320, 40, 90, 40);
+        jbtn_eliminarP.setBounds(240, 10, 80, 40);
 
-        jbtn_exportarP.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jbtn_exportarP.setText("EXPORTAR");
-        jbtn_exportarP.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbtn_exportarPActionPerformed(evt);
-            }
-        });
+        jbtn_exportarP.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        jbtn_exportarP.setText("Exportar");
         getContentPane().add(jbtn_exportarP);
-        jbtn_exportarP.setBounds(420, 40, 100, 40);
+        jbtn_exportarP.setBounds(320, 10, 80, 40);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -110,10 +105,6 @@ public class Personal extends javax.swing.JDialog {
     private void jbtn_atrasPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_atrasPActionPerformed
         this.setVisible(false);
     }//GEN-LAST:event_jbtn_atrasPActionPerformed
-
-    private void jbtn_exportarPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_exportarPActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jbtn_exportarPActionPerformed
 
     /**
      * @param args the command line arguments

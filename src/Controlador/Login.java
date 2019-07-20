@@ -86,7 +86,8 @@ public class Login extends javax.swing.JDialog {
     private void jbtn_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_loginActionPerformed
         Seguridad seg= new Seguridad();
         try {
-            var=seg.validacion(jtxt_usuario.getText(), jpsw_clave.getSelectedText());
+            String cclave = new String(jpsw_clave.getPassword());
+            var=seg.validacion(jtxt_usuario.getText(),cclave);
             if(var.equals("complete los datos") || var.equals("Usuario o contraseña incorrecta")){
                 JOptionPane.showMessageDialog(null, var);
             } else {
@@ -94,7 +95,7 @@ public class Login extends javax.swing.JDialog {
                 this.setVisible(false);
             }
         } catch (Exception e) {
-           JOptionPane.showMessageDialog(null, "Error "+e);
+           JOptionPane.showMessageDialog(null, "Error LOGIN "+e);
         }
     }//GEN-LAST:event_jbtn_loginActionPerformed
 
