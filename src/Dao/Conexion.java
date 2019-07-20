@@ -8,10 +8,10 @@ import java.sql.SQLException;
 public class Conexion {
     protected Connection conexion; //ambito solo del paquete
     
-    private final String DB_URL = "jdbc:mysql://localhost:3306/mikhuna?useSSL=false";
+    private final String DB_URL = "jdbc:mysql://localhost:3307/mikhuna?useSSL=false";
     
     private final String USUAR = "root";
-    private final String CONTR = "";
+    private final String CONTR = "usbw";
     
     public void conectar() throws Exception{
         try{

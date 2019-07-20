@@ -1,16 +1,52 @@
 
 package Controlador;
 
-public class ListaPedido extends javax.swing.JDialog {
+import Dao.CRUD;
+import Dao.DAOPedido;
+import Model.Pedido;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
+public class ListaPedido extends javax.swing.JDialog {
+     
     public ListaPedido(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        
         this.setTitle("Mikhuna");
-        this.setSize(1000, 600);
+        this.setSize(1100, 600);
         this.setResizable(false);
         setLocationRelativeTo(null);
+        
         jtbl_listaPedidoP.getTableHeader().setPreferredSize(new java.awt.Dimension(0,30));
+        
+        DefaultTableModel model = (DefaultTableModel) jtbl_listaPedidoP.getModel();
+        model.setRowCount(0);
+        
+        try{
+            CRUD dao = new DAOPedido();
+            for(Pedido p : (List<Pedido>) dao.listar()){
+                    Object[] ob = new Object[model.getColumnCount()];
+                    ob[0] = p.getCodigoP();
+                    ob[1] = p.getDmesa().getNombreM();
+                    ob[2] = p.getDireccionP();
+                    ob[3] = p.getMontoP();
+                    ob[4] = p.getEstadoPed();
+                    ob[5] = p.getFechaHoraP();
+                    if(p.getFechaHoraP().equals(p.getFechaHoraC())){
+                        ob[6] = "";
+                    }else{                        
+                        ob[6] = p.getFechaHoraC();
+                    }
+                    
+                    model.addRow(ob);
+            }
+            
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e.getMessage()+"ERROR");
+        }
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -44,12 +80,12 @@ public class ListaPedido extends javax.swing.JDialog {
         jScrollPane1.setViewportView(jtbl_listaPedidoP);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(30, 90, 930, 390);
+        jScrollPane1.setBounds(40, 90, 1020, 380);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel1.setText("LISTA DE PEDIDOS");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(420, 30, 140, 17);
+        jLabel1.setBounds(470, 40, 140, 17);
 
         jbtn_verLP.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jbtn_verLP.setText("VER");
@@ -58,6 +94,11 @@ public class ListaPedido extends javax.swing.JDialog {
 
         jbtn_agregarLP.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jbtn_agregarLP.setText("AGREGAR");
+        jbtn_agregarLP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtn_agregarLPActionPerformed(evt);
+            }
+        });
         getContentPane().add(jbtn_agregarLP);
         jbtn_agregarLP.setBounds(50, 510, 100, 30);
 
@@ -74,15 +115,49 @@ public class ListaPedido extends javax.swing.JDialog {
         jbtn_cobrarLP.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jbtn_cobrarLP.setText("COBRAR");
         getContentPane().add(jbtn_cobrarLP);
-        jbtn_cobrarLP.setBounds(830, 510, 100, 30);
+        jbtn_cobrarLP.setBounds(940, 510, 100, 30);
 
         jbtn_facturaLP.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jbtn_facturaLP.setText("FACTURA");
         getContentPane().add(jbtn_facturaLP);
-        jbtn_facturaLP.setBounds(710, 510, 100, 30);
+        jbtn_facturaLP.setBounds(820, 510, 100, 30);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    
+    private void jbtn_agregarLPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_agregarLPActionPerformed
+        PedidoDetallado dialog = new PedidoDetallado(new javax.swing.JFrame(), true);
+        dialog.setTitle("Pedido y Mesa");
+        dialog.setVisible(true);
+        
+        if(dialog.isAceptado()){
+           DefaultTableModel model = (DefaultTableModel) jtbl_listaPedidoP.getModel();
+            model.setRowCount(0);
+
+            try{
+                CRUD dao = new DAOPedido();
+                for(Pedido p : (List<Pedido>) dao.listar()){
+                        Object[] ob = new Object[model.getColumnCount()];
+                        ob[0] = p.getCodigoP();
+                        ob[1] = p.getDmesa().getNombreM();
+                        ob[2] = p.getDireccionP();
+                        ob[3] = p.getMontoP();
+                        ob[4] = p.getEstadoPed();
+                        ob[5] = p.getFechaHoraP();
+                        if(p.getFechaHoraP().equals(p.getFechaHoraC())){
+                            ob[6] = "";
+                        }else{                        
+                            ob[6] = p.getFechaHoraC();
+                        }
+
+                        model.addRow(ob);
+                }
+
+            }catch(Exception e){
+                JOptionPane.showMessageDialog(null, e.getMessage()+"ERROR");
+            } 
+        }
+    }//GEN-LAST:event_jbtn_agregarLPActionPerformed
 
     /**
      * @param args the command line arguments
