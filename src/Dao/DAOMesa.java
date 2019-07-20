@@ -11,7 +11,7 @@ import java.util.List;
 /** @author MIKHUNA S.A.C */
 
 public class DAOMesa extends Conexion implements CRUD<Mesa>{
-
+    
     @Override
     public void registrar(Mesa t) throws Exception {
         try{
@@ -67,7 +67,7 @@ public class DAOMesa extends Conexion implements CRUD<Mesa>{
         List<Mesa> lista = null;
         try{
             this.conectar();
-            PreparedStatement st =  this.conexion.prepareStatement("SELECT * FROM empleado");
+            PreparedStatement st =  this.conexion.prepareStatement("SELECT * FROM mesa");
             lista = new ArrayList<>();
             ResultSet rs = st.executeQuery();
             while(rs.next()){
